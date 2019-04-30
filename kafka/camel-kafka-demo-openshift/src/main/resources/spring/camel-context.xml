@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <bean class="org.apache.camel.component.kafka.KafkaComponent" id="kafka">
+       <!-- <property name="brokers" value=" 10.129.0.4:9091,10.130.0.4:9091,10.130.0.5:9091"/>-->
+      <!-- <property name="brokers" value="my-cluster-kafka-bootstrap:9094"/> --> <!--internal -->
+       <property name="brokers" value="my-cluster-kafka-bootstrap-my-project.apps.kakarlaamqstreams.lab.pnq2.cee.redhat.com:443"/>
+    </bean>
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <route id="consumer-route">
+            <from id="kafka-consumer" uri="kafka:my-topic?securityProtocol=SSL&amp;sslTruststoreLocation=src/main/resources/client.truststore.jks&amp;sslTruststorePassword=amqstreams123"/>
+            <log id="route-log" message="consumer >>> ${body}"/>
+        </route>
+        <route id="producer-route">
+            <from id="route-timer" uri="timer://foo?period=1000"/>
+            <setBody id="route-setBody">
+                <simple>Hello World from camel-context.xml with ID ${id}</simple>
+            </setBody>
+            <to id="_kafka1" uri="kafka:my-topic?securityProtocol=SSL&amp;sslTruststoreLocation=src/main/resources/client.truststore.jks&amp;sslTruststorePassword=amqstreams123"/>
+            <log id="route-log-producer" message="producer >>> ${body}"/>
+        </route>
+    </camelContext>
+</beans>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+	xmlns:cxf-core="http://cxf.apache.org/blueprint/core"
+	xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+	xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs"
+	xmlns:httpu="http://cxf.apache.org/transports/http-undertow/configuration"
+	xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+	xmlns:sec="http://cxf.apache.org/configuration/security"
+	xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.0.0.xsd
+       http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
+       http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
+       http://cxf.apache.org/transports/http-undertow/configuration http://cxf.apache.org/schemas/configuration/http-undertow.xsd
+       http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd">
+       
+   <!--  <cm:property-placeholder id="myblueprint.placeholder" persistent-id="camel.blueprint">
+        list some properties for this test
+        <cm:default-properties>
+            <cm:property name="cert_port" value="9006"/>
+            <cm:property name="password" value="CertPassword"/>
+        </cm:default-properties>
+    </cm:property-placeholder> -->
+    <cxf:cxfEndpoint address="https://localhost:5043/soap/personService"
+        id="personService" serviceClass="com.mycompany.cxf.soap.model.PersonService"/>
+    <bean class="com.mycompany.cxf.soap.model.PersonServiceImpl" id="personBean"/>
+  <!--   <bean class="com.mycompany.cxf.soap.model.PersonProcessor" id="personProcessor"/> -->
+     <httpu:engine-factory bus="cxf">
+        <httpu:engine port="5043" host="localhost">
+           <httpu:tlsServerParameters secureSocketProtocol="TLSv1.2" >
+                <sec:keyManagers keyPassword="CertPassword">
+                    <sec:keyStore file="/home/kkakarla/Development/fuse-7/fuse-karaf/fuse-karaf-7.1.0.fuse-710023-redhat-00001/etc/CertName.jks" password="CertPassword"  type="JKS"/>
+                </sec:keyManagers>
+                <sec:trustManagers>
+                    <sec:keyStore file="/home/kkakarla/Development/fuse-7/fuse-karaf/fuse-karaf-7.1.0.fuse-710023-redhat-00001/etc/CertName.jks" password="CertPassword" type="jks"/>
+                </sec:trustManagers>
+              <sec:cipherSuitesFilter>
+				<sec:include>.*_WITH_3DES_.*</sec:include>
+				<sec:include>.*_WITH_DES_.*</sec:include>
+				<sec:exclude>.*_WITH_NULL_.*</sec:exclude>
+				<sec:exclude>.*_DH_anon_.*</sec:exclude>
+			</sec:cipherSuitesFilter>
+		<sec:clientAuthentication want="true" required="false"/>
+        </httpu:tlsServerParameters>
+        </httpu:engine>
+       </httpu:engine-factory>     
+     
+    <bean class="com.mycompany.cxf.soap.endpoint.TestResponse" id="fakeResponse"/>
+    <camelContext id="camelContext-4379d957-c511-4e50-9c55-d06c22967f0b" xmlns="http://camel.apache.org/schema/blueprint">
+        <route id="PersonServiceRoute">
+            <from id="_from1" uri="cxf:bean:personService"/>
+            <choice id="_choice1">
+                <when id="_when1">
+                    <simple>${in.header.operationName} == 'getPerson'</simple>
+                    <log id="_log1" message="The body ${body}"/>
+                    <bean id="_bean1" method="getPerson" ref="personBean"/>
+                    <to id="_to1" uri="direct-vm:readHeader?block=false"/>
+                </when>
+            </choice>
+            <!-- <log id="_log2" message="The message contains ${body}"/> -->
+        </route>
+        <!--  <route id="_route1">
+            <from id="_from2" uri="direct-vm:readHeader"/>
+            <process id="_process1" ref="personProcessor"/>
+        </route> -->
+    </camelContext>
+</blueprint>

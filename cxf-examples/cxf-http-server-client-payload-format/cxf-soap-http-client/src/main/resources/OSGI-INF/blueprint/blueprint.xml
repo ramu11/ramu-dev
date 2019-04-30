@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.2.0"
+           xmlns:http="http://cxf.apache.org/transports/http/configuration"
+           xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+           xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+           xmlns:sec="http://cxf.apache.org/configuration/security"
+           xmlns:httpj="http://cxf.apache.org/transports/http-jetty/configuration"
+           xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+           xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+       http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd
+       http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+       http://cxf.apache.org/transports/http-jetty/configuration http://cxf.apache.org/schemas/configuration/http-jetty.xsd
+       http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd
+       http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd">
+
+
+
+    <cxf:cxfEndpoint id="personServiceClient"
+                     address="http://localhost:9006/soap/personService"
+                     serviceClass="com.mycompany.cxf.soap.model.PersonService"
+                     wsdlURL="wsdl/person.wsdl"> 
+        <cxf:properties>
+            <entry key="thread.local.request.context" value="true"/>
+            <entry key="dataFormat" value="PAYLOAD" />
+            <entry key="loggingFeatureEnabled" value="true"/>
+        </cxf:properties>  
+        <cxf:handlers>
+            <bean class="com.mycompany.cxf.soap.endpoint.TestSoapHandler"></bean>
+        </cxf:handlers>                
+        <cxf:inInterceptors>
+            <bean class="com.mycompany.cxf.soap.endpoint.SoapActionInInterceptor" />
+        </cxf:inInterceptors>
+        <cxf:outInterceptors>
+            <bean class="com.mycompany.cxf.soap.endpoint.SoapActionOutInterceptor" />
+        </cxf:outInterceptors>    
+    </cxf:cxfEndpoint>                 
+                         
+    <bean id="req" class="com.mycompany.cxf.soap.endpoint.TestRequest"/>   
+    
+    <bean id="ctxCopyProcessor" class="com.mycompany.cxf.soap.endpoint.CXFContextDeepCopyProcessor"/>
+    <bean id="ctxModProcessor" class="com.mycompany.cxf.soap.endpoint.CXFContextModProcessor"/>
+    <bean id="ctxLogProcessor" class="com.mycompany.cxf.soap.endpoint.CXFContextLoggingProcessor"/>
+    <bean id="ctxInitProcessor" class="com.mycompany.cxf.soap.endpoint.CXFContextInitProcessor"/> 
+           
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint" trace="true">
+        
+        <route id="PersonServiceRoute">
+            <from uri="timer://foo?repeatCount=1&amp;fixedRate=true&amp;period=120000"/>
+            <to uri="direct:start"/>
+        </route>
+        
+        <route id="parent">
+            <from uri="direct:start"/>
+            <!--process ref="ctxInitProcessor"/-->
+            <to uri="bean:req?method=personRequest" /> 
+            <marshal>
+                <jaxb prettyPrint="true" contextPath="com.mycompany.cxf.soap.model"/>
+            </marshal>
+            <to uri="cxf:bean:personServiceClient?defaultOperationName=getPerson&amp;defaultOperationNamespace=http://model.soap.cxf.mycompany.com/"/>              
+            <!--log message="###############Before: Multicast: The message contains ${body} and ${headers}"/-->
+            
+            <multicast onPrepareRef="ctxCopyProcessor" parallelProcessing="true" >
+                <to uri="vm:multicast1"/>
+                <to uri="vm:multicast2"/>
+            </multicast>
+            
+            <!--process ref="ctxLogProcessor"/-->
+            <log message="################After Multicast: The message contains ${body} and ${headers}"/>
+        </route>
+        
+        <route id="multicast1">
+            <from uri="vm:multicast1"/>
+            <process ref="ctxModProcessor"/>
+            <process ref="ctxLogProcessor"/>
+            <unmarshal>
+                <jaxb contextPath="com.mycompany.cxf.soap.model"/>
+            </unmarshal>
+            <log message="##################Multicast 1: The message contains ${body} and ${headers}"/>
+        </route>
+        
+         <route id="multicast2">
+            <from uri="vm:multicast2"/>
+            <delay>
+                <constant>2000</constant>
+            </delay>
+            <process ref="ctxLogProcessor"/>
+            <unmarshal>
+                <jaxb contextPath="com.mycompany.cxf.soap.model"/>
+            </unmarshal>
+            <log message="##################Multicast 2: The message contains ${body} and ${headers}"/>
+        </route>       
+        
+    </camelContext>
+</blueprint>

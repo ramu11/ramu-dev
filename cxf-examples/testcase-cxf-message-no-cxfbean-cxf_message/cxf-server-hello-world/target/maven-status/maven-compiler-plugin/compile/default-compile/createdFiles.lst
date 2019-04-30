@@ -1,0 +1,11 @@
+org/apache/hello_world_soap_http/types/GreetMe.class
+org/jboss/fuse/samples/GreeterSpringServer.class
+org/apache/hello_world_soap_http/types/package-info.class
+org/jboss/fuse/samples/GreeterServer.class
+org/apache/hello_world_soap_http/types/ObjectFactory.class
+org/apache/hello_world_soap_http/UnknownRequestFault.class
+org/apache/hello_world_soap_http/types/UnknownRequestFault.class
+org/apache/hello_world_soap_http/SOAPService.class
+org/jboss/fuse/samples/GreeterImpl.class
+org/apache/hello_world_soap_http/types/GreetMeResponse.class
+org/apache/hello_world_soap_http/Greeter.class

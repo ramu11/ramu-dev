@@ -1,0 +1,7 @@
+metadata:
+  annotations:
+    api.service.kubernetes.io/path: /services/foo/
+spec:
+  ports:
+    - port: 9090
+      targetPort: 9090

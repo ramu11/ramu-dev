@@ -1,0 +1,63 @@
+
+
+
+ActiveMQ Installation
+
+http://activemq.apache.org/download.html
+http://activemq.apache.org/getting-started.html#GettingStarted-InstallationProcedureforWindows
+
+bin\activemq start
+
+ http://10.97.153.24:8161/
+ admin/admin
+ http://10.97.153.24:8161/admin/queues.jsp
+
+
+
+
+
+
+
+##OUTPUT####
+
+17/05/10 09:59:37 INFO support.ClassPathXmlApplicationContext: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@39a054a5: startup date [Wed May 10 09:59:37 IST 2017]; root of context hierarchy
+17/05/10 09:59:37 INFO xml.XmlBeanDefinitionReader: Loading XML bean definitions from class path resource [ActiveMQContext.xml]
+17/05/10 09:59:39 WARN tcp.TcpTransportFactory: path isn't a valid local location for TcpTransport to use
+17/05/10 09:59:40 INFO spring.SpringCamelContext: Apache Camel 2.15.1 (CamelContext: camel-1) is starting
+17/05/10 09:59:40 INFO management.ManagedManagementStrategy: JMX is enabled
+17/05/10 09:59:40 INFO converter.DefaultTypeConverter: Loaded 186 type converters
+17/05/10 09:59:41 INFO spring.SpringCamelContext: AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+17/05/10 09:59:41 INFO spring.SpringCamelContext: StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+17/05/10 09:59:41 INFO spring.SpringCamelContext: Route: route1 started and consuming from: Endpoint[direct://start]
+17/05/10 09:59:41 WARN tcp.TcpTransportFactory: path isn't a valid local location for TcpTransport to use
+17/05/10 09:59:41 INFO spring.SpringCamelContext: Route: route2 started and consuming from: Endpoint[activemq://queue:Q1]
+17/05/10 09:59:41 INFO spring.SpringCamelContext: Total 2 routes, of which 2 is started.
+17/05/10 09:59:41 INFO spring.SpringCamelContext: Apache Camel 2.15.1 (CamelContext: camel-1) started in 0.706 seconds
+17/05/10 09:59:41 INFO spring.SpringCamelContext: Apache Camel 2.15.1 (CamelContext: camel-1) is starting
+17/05/10 09:59:41 INFO spring.SpringCamelContext: Total 2 routes, of which 2 is started.
+17/05/10 09:59:41 INFO spring.SpringCamelContext: Apache Camel 2.15.1 (CamelContext: camel-1) started in 0.000 seconds
+17/05/10 09:59:41 INFO route1:  Transferring
+17/05/10 09:59:41 WARN tcp.TcpTransportFactory: path isn't a valid local location for TcpTransport to use
+17/05/10 09:59:41 INFO route1:  Transfered 
+17/05/10 09:59:41 INFO spring.SpringCamelContext: Apache Camel 2.15.1 (CamelContext: camel-1) is shutting down
+17/05/10 09:59:41 INFO impl.DefaultShutdownStrategy: Starting to graceful shutdown 2 routes (timeout 300 seconds)
+17/05/10 09:59:41 INFO route2: Print the message from out to console
+<?xml version="1.0" encoding="UTF-8"?>
+<orders>
+	<order product="electronics">
+		<items>
+			<item>Laptop</item>
+			<item>Mobile</item>
+		</items>
+	</order>
+	<order product="books">
+		<items>
+			<item>Design Patterns</item>
+			<item>XML</item>
+		</items>
+	</order>
+</orders>17/05/10 09:59:41 INFO impl.DefaultShutdownStrategy: Route: route2 shutdown complete, was consuming from: Endpoint[activemq://queue:Q1]
+17/05/10 09:59:41 INFO impl.DefaultShutdownStrategy: Route: route1 shutdown complete, was consuming from: Endpoint[direct://start]
+17/05/10 09:59:41 INFO impl.DefaultShutdownStrategy: Graceful shutdown of 2 routes completed in 0 seconds
+17/05/10 09:59:41 INFO spring.SpringCamelContext: Apache Camel 2.15.1 (CamelContext: camel-1) uptime 0.192 seconds
+17/05/10 09:59:41 INFO spring.SpringCamelContext: Apache Camel 2.15.1 (CamelContext: camel-1) is shutdown in 0.020 seconds

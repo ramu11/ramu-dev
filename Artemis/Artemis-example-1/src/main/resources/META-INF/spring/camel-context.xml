@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+	
+		
+	<bean id="jms" 	class="org.apache.camel.component.jms.JmsComponent">
+		<property name="connectionFactory" ref="localJmsConnectionFactory" />
+	</bean>
+	<bean id="localJmsConnectionFactory"
+		class="org.apache.activemq.artemis.jms.client.ActiveMQJMSConnectionFactory">
+		<constructor-arg index="0" value="tcp://localhost:61616"/>
+		<constructor-arg index="1" value="amq"/>
+		<constructor-arg index="2" value="amq"/>
+	</bean>
+	
+		
+	<camelContext id="_camelContext1"
+		xmlns="http://camel.apache.org/schema/spring">
+		
+		
+        
+         <route id="test1">
+            <from id="testfrom1" uri="file:src/main/data?noop=true"/>
+            <log id="test-1og1" message=" Transferring"/>
+             <to id="test-to1" uri="direct:ExampleQueue"/>
+            
+        </route>
+        
+         <route id="test3">
+            <from id="test-from3" uri="direct:ExampleQueue"/>
+            <log id="test-log3" message=" Transferring to queue"/>
+            <to id="test-to3" uri="jms:queue:SCIENCEQUEUE"/>
+        </route> 
+        
+        <!-- Virtual Topics -->
+       <!--  <route id="test4">
+            <from id="test-from4" uri="jms:topic:exampleTopic?clientId=1&amp;durableSubscriptionName=bar1"/>
+            <log id="test-log4" message=" consuming jms:topic:exampleTopic"/>
+            <to id="test-to4" uri="file:src/main/test1"/>
+        </route>   
+         <route id="test5">
+            <from id="test-from5" uri="jms:topic:exampleTopic?clientId=2&amp;durableSubscriptionName=bar2"/>
+            <log id="test-log5" message=" consuming jms:topic:exampleTopic"/>
+            <to id="test-to5" uri="file:src/main/test2"/>
+        </route>  -->
+        
+        <!--  <route id="selector1" >
+         <from uri="timer://foo?fixedRate=true&amp;period=60000"/>
+         <to uri="jms:topic:STOCKS.UK"/>
+         </route>
+       
+        <route id="selector2" >
+        
+            <from id="s-from" uri="jms:topic:STOCKS.UK?clientId=1&amp;durableSubscriptionName=dsn1&amp;selector=SE='NASDAQ'" />
+            <log id="s-log" message=" consuming jms:topic:ExampleTopic"/>
+            <to id="s-to" uri="log:stocks?showAll=true"/>
+            <to id="s-to" uri="mock:result"/>
+            <to id="s-to" uri="file:src/main/data/test.txt"/>
+        </route>   -->
+
+	</camelContext>
+</beans>

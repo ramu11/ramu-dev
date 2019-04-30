@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0      https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd            http://camel.apache.org/schema/blueprint      http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <cm:property-placeholder id="blueprint_property"
+        persistent-id="mydozerexample" update-strategy="reload">
+        <cm:default-properties>
+            <cm:property name="input" value="file:work/cbr/inbox?noop=true"/>
+            <cm:property name="output" value="file:work/cbr/outbox"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
+    <camelContext id="MyDozerExample" xmlns="http://camel.apache.org/schema/blueprint">
+        <endpoint id="_source" uri="{{input}}"/>
+        <endpoint id="_targetFile" uri="{{output}}"/>
+        <route id="map">
+            <from id="fromFile" uri="ref:_source"/>
+            <to id="toBean" uri="bean:myBean?method=execute"/>
+            <to id="ToFile" uri="ref:_targetFile"/>
+        </route>
+    </camelContext>
+    <bean class="de.mypackage.MyBean" id="myBean">
+        <property name="test" value="${test}"/>
+    </bean>
+        <bean class="de.mypackage.MyBean2" id="myBean2">
+        <property name="test" value="${test}"/>
+    </bean>
+</blueprint>

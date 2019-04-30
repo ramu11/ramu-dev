@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.test.fileInputTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.366 s - in com.test.fileInputTest

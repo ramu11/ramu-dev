@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.2.0"
+           xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+           xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+           xmlns:sec="http://cxf.apache.org/configuration/security"
+           xmlns:httpj="http://cxf.apache.org/transports/http-jetty/configuration"
+           xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+           xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+       http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd
+       http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+       http://cxf.apache.org/transports/http-jetty/configuration http://cxf.apache.org/schemas/configuration/http-jetty.xsd
+       http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd
+       http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd">
+
+<cm:property-placeholder id="myblueprint.placeholder" persistent-id="camel.blueprint">
+        <!-- list some properties for this test -->
+        <cm:default-properties>
+            <cm:property name="cert_port" value="9006"/>
+            <cm:property name="password" value="CertPassword"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
+
+  <cxf:cxfEndpoint id="personService"
+                          address="https://localhost:9006/soap/personService"
+                          serviceClass="com.mycompany.cxf.soap.model.PersonService"
+                          />
+                          <!-- <camelcxf:cxfEndpoint id="personService"
+                          address="/personService"
+                          serviceClass="com.mycompany.cxf.soap.model.PersonService"
+                          />  -->
+                          
+    <httpj:engine-factory bus="cxf">
+        <httpj:engine port="${cert_port}" host="localhost">
+            <httpj:tlsServerParameters>
+                <sec:keyManagers keyPassword="${password}">
+                    <sec:keyStore resource="keystore/CertName.jks" password="${password}" type="JKS"/>
+                </sec:keyManagers>
+                <!-- <sec:trustManagers>
+                    <sec:keyStore file="/home/cpandey/NotBackedUp/Development/JBoss-Distributions-Fuse/jboss-fuse-6.2.0.redhat-133/etc/CertName.jks" password="CertPassword" type="jks"/>
+                </sec:trustManagers> -->
+                <!-- <sec:certConstraints>
+                    <sec:SubjectDNConstraints>
+                        <sec:RegularExpression>${server.tls.subject.regex}</sec:RegularExpression>
+                    </sec:SubjectDNConstraints>
+                    <sec:IssuerDNConstraints>
+                        <sec:RegularExpression>${server.tls.issuer.regex}</sec:RegularExpression>
+                    </sec:IssuerDNConstraints>
+                </sec:certConstraints>
+                <sec:clientAuthentication want="${server.tls.client.auth.want}" required="${server.tls.client.auth.required}"/> -->
+              <sec:cipherSuitesFilter>
+		<sec:include>.*_WITH_3DES_.*</sec:include>
+		<sec:include>.*_WITH_DES_.*</sec:include>
+		<sec:exclude>.*_WITH_NULL_.*</sec:exclude>
+		<sec:exclude>.*_DH_anon_.*</sec:exclude>
+		</sec:cipherSuitesFilter>
+		<sec:clientAuthentication want="true" required="false"/>
+            </httpj:tlsServerParameters>
+        </httpj:engine>
+    </httpj:engine-factory>                        
+  <bean id="fakeResponse" class="com.mycompany.cxf.soap.endpoint.TestResponse"/>
+  <camelContext xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="PersonServiceRoute">
+        <from uri="cxf:bean:personService"/>
+        <log message="The message contains ${body}"/>
+        <bean ref="fakeResponse" method="getPerson"/>
+    </route>
+</camelContext>
+</blueprint>

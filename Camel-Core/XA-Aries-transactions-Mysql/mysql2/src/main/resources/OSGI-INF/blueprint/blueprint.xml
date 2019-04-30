@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.3.0"
+        xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.4.0"
+        xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+
+    
+   
+
+
+    <!-- XA, non-pooling, non-enlisting data source specific for PostgreSQL database -->
+    <bean id="mysql2XADataSource" class="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource">
+        <!-- These properties will be replaced at runtime by Aries-Blueprint -->
+        <property name="url" value="jdbc:mysql://localhost:3306/transactions2" />
+        <!-- credentials needed for XA recovery -->
+        <property name="user" value="root" />
+        <property name="password" value="admin" />
+        <!-- <property name="applicationName" value="Fuse" /> -->
+    </bean>
+
+   
+
+    <service ref="mysql2XADataSource" interface="javax.sql.XADataSource">
+        <service-properties>
+            <!--
+                This will allow to lookup this OSGi service using two JNDI names:
+                 - "osgi:service/javax.sql.XADataSource/(osgi.jndi.service.name=jdbc/transactionsdbxa)"
+                 - "osgi:service/jdbc/transactionsdbxa"
+                Using any.other.key makes the service available only using JNDI name:
+                 - "osgi:service/javax.sql.XADataSource/(any.other.key=jdbc/transactionsdbxa)"
+            -->
+            <entry key="osgi.jndi.service.name" value="jdbc/mysql2XADS" />
+            <entry key="aries.xa.name" value="mysql2.xa" /><!-- Used for XA recovery -->
+            <entry key="datasource.name" value="mysql2XADS" />
+            <entry key="aries.xa.username" value="root" />
+            <entry key="aries.xa.password" value="admin" />
+            <entry key="aries.xa.pooling" value="true" />
+            <entry key="aries.xa.poolMaxSize" value="10" />
+            <entry key="aries.xa.poolMinSize" value="0" />
+            <entry key="aries.xa.transaction" value="xa" /><!-- default for javax.sql.XADataSource -->
+            <entry key="aries.xa.exceptionSorter" value="known" />
+        </service-properties>
+    </service>
+
+</blueprint>

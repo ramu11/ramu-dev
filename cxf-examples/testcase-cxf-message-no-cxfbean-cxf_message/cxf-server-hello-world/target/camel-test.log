@@ -1,0 +1,26 @@
+2016-04-26 15:40:14,573 INFO  ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6d3ae121: startup date [Tue Apr 26 15:40:14 IST 2016]; root of context hierarchy 
+2016-04-26 15:40:14,604 INFO  XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [META-INF/spring/beans.xml] 
+2016-04-26 15:40:14,728 INFO  DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5bbb8d0f: defining beans [org.apache.cxf.jaxws.EndpointImpl--1888339971]; root of factory hierarchy 
+2016-04-26 15:40:14,887 INFO  ReflectionServiceFactoryBean - Creating Service {http://apache.org/hello_world_soap_http}SOAPService from class org.apache.hello_world_soap_http.Greeter 
+2016-04-26 15:40:15,261 INFO  ServerImpl - Setting the server's publish address to be http://localhost:9101/GreeterService 
+2016-04-26 15:40:15,289 INFO  Server - jetty-8.1.14.v20131031 
+2016-04-26 15:40:15,319 INFO  AbstractConnector - Started SelectChannelConnector@localhost:9101 
+2016-04-26 15:45:33,202 INFO  Greeter - Inbound Message
+----------------------------
+ID: 1
+Address: http://localhost:9101/GreeterService
+Encoding: UTF-8
+Http-Method: POST
+Content-Type: text/xml; charset=UTF-8
+Headers: {Accept=[*/*], breadcrumbId=[ID-kkakarla-pnq-csb-51727-1461665730509-0-1], Cache-Control=[no-cache], connection=[keep-alive], Content-Length=[309], content-type=[text/xml; charset=UTF-8], firedTime=[Tue Apr 26 15:45:33 IST 2016], Host=[localhost:9101], Pragma=[no-cache], SOAPAction=[""], User-Agent=[Apache CXF 2.7.0.redhat-610379]}
+Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"/><soap:Body><ns2:greetMe xmlns:ns2="http://apache.org/hello_world_soap_http/types"><ns2:requestType>Joe</ns2:requestType></ns2:greetMe></soap:Body></soap:Envelope>
+-------------------------------------- 
+2016-04-26 15:45:33,326 INFO  Greeter - Outbound Message
+---------------------------
+ID: 1
+Response-Code: 200
+Encoding: UTF-8
+Content-Type: text/xml
+Headers: {}
+Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><greetMeResponse xmlns="http://apache.org/hello_world_soap_http/types"><responseType>hello Joe</responseType></greetMeResponse></soap:Body></soap:Envelope>
+-------------------------------------- 

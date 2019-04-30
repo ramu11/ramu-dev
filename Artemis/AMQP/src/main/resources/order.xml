@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders>
+	<order product="electronics">
+		<items>
+			<item>Laptop</item>
+			<item>Mobile</item>
+		</items>
+	</order>
+	<order product="books">
+		<items>
+			<item>Design Patterns</item>
+			<item>XML</item>
+		</items>
+	</order>
+</orders>

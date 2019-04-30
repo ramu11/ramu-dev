@@ -1,0 +1,11 @@
+/home/kkakarla/Development/Camel-Fuse-Examples/testcase-cxf-message-no-cxfbean/cxf-server-hello-world/src/main/java/org/jboss/fuse/samples/GreeterSpringServer.java
+/home/kkakarla/Development/Camel-Fuse-Examples/testcase-cxf-message-no-cxfbean/cxf-server-hello-world/target/generated/src/main/java/org/apache/hello_world_soap_http/Greeter.java
+/home/kkakarla/Development/Camel-Fuse-Examples/testcase-cxf-message-no-cxfbean/cxf-server-hello-world/target/generated/src/main/java/org/apache/hello_world_soap_http/types/UnknownRequestFault.java
+/home/kkakarla/Development/Camel-Fuse-Examples/testcase-cxf-message-no-cxfbean/cxf-server-hello-world/target/generated/src/main/java/org/apache/hello_world_soap_http/types/ObjectFactory.java
+/home/kkakarla/Development/Camel-Fuse-Examples/testcase-cxf-message-no-cxfbean/cxf-server-hello-world/target/generated/src/main/java/org/apache/hello_world_soap_http/types/GreetMeResponse.java
+/home/kkakarla/Development/Camel-Fuse-Examples/testcase-cxf-message-no-cxfbean/cxf-server-hello-world/target/generated/src/main/java/org/apache/hello_world_soap_http/types/GreetMe.java
+/home/kkakarla/Development/Camel-Fuse-Examples/testcase-cxf-message-no-cxfbean/cxf-server-hello-world/target/generated/src/main/java/org/apache/hello_world_soap_http/SOAPService.java
+/home/kkakarla/Development/Camel-Fuse-Examples/testcase-cxf-message-no-cxfbean/cxf-server-hello-world/src/main/java/org/jboss/fuse/samples/GreeterImpl.java
+/home/kkakarla/Development/Camel-Fuse-Examples/testcase-cxf-message-no-cxfbean/cxf-server-hello-world/src/main/java/org/jboss/fuse/samples/GreeterServer.java
+/home/kkakarla/Development/Camel-Fuse-Examples/testcase-cxf-message-no-cxfbean/cxf-server-hello-world/target/generated/src/main/java/org/apache/hello_world_soap_http/UnknownRequestFault.java
+/home/kkakarla/Development/Camel-Fuse-Examples/testcase-cxf-message-no-cxfbean/cxf-server-hello-world/target/generated/src/main/java/org/apache/hello_world_soap_http/types/package-info.java

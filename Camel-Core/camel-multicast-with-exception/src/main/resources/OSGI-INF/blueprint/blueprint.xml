@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="
+             http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+             http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+
+<!--    <bean id="myOrderService" class="io.fabric8.quickstarts.errors.OrderValidationException"/>-->
+
+  <bean id="simpleStrategy" class="com.redhat.SimpleAggregationStrategy"/>
+
+
+		<bean id="forced" class="java.lang.Exception"/>
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint">
+		<!--
+        <onException useOriginalMessage="true">
+            <exception>java.lang.Exception</exception>
+            <handled>
+                <constant>true</constant>
+            </handled>
+            <log message="*****************Exception is thrown*****************"/>
+            <log message="Headers after multicast : ${headers}" /> 
+        </onException>
+		-->
+        <route id="mainRoute">
+            <from uri="file:src/main/data?noop=true"/>
+            <setExchangePattern pattern="InOut" />
+            <log message="Processing ${file:name}"/>
+            <to uri="direct-vm:iuDataInProcessor" />
+         </route>
+
+        <route id="iuDataInProcessorRoute">
+			<from uri="direct-vm:iuDataInProcessor"/> 
+             <log message="Headers before multicast : ${headers}" /> 
+             <setProperty propertyName="Test3"> <simple>Test3 property</simple> </setProperty>
+              <setProperty propertyName="Test4"> <simple>Test4 property</simple> </setProperty>
+              <setHeader headerName="TEST1"><constant>TEST HEADER !!!!!!!!!!!!</constant></setHeader>
+			    <setHeader headerName="TEST2"><constant>TEST HEADER 2 !!!!!!!!!!!!</constant></setHeader>
+            <multicast parallelProcessing="true" shareUnitOfWork="true"  stopOnException="true" strategyRef="simpleStrategy" >
+				<to uri="direct-vm:payLoadActionPersistorSyncServiceResponse" />
+				<to uri="direct-vm:setIUMetaDataForDataFact" />
+			 </multicast>
+			<log message="Headers after multicast : ${headers}" /> 			 
+			<to uri="direct-vm:testHeadersOnException" />
+         </route>
+
+       <route id="payLoadActionPersistorSyncServiceResponse">
+			<from uri="direct-vm:payLoadActionPersistorSyncServiceResponse"/> 
+            <!--<to uri="bean:myOrderService?method=MyOrderValidationException"/>-->
+            <log message="Done processing: payLoadActionPersistorSyncServiceResponse ${file:name}"/>
+        </route>
+
+        <route id="setIUMetaDataForDataFact">
+			 <from uri="direct-vm:setIUMetaDataForDataFact"/> 
+             <log message="Done processing : setIUMetaDataForDataFact ${file:name}"/>
+        </route>
+
+       <route id="direct-vm:testHeadersOnExceptionRoute">
+			 <from uri="direct-vm:testHeadersOnException"/> 
+             <log message="Headers before throwing an Exception:: ${headers}"/>
+			 <throwException ref="forced"/>	
+		   <onException useOriginalMessage="true">
+				<exception>java.lang.Exception</exception>
+				<handled>
+					<constant>true</constant>
+				</handled>
+				<log message="*****************Exception is thrown*****************"/>
+				<log message="Headers in the OnException block after throwing exception : ${headers}" /> 
+				<log message="Body in the OnException block : ${body}" /> 
+				<log message="Headers in the OnException block after throwing exception : ${exchangeProperty.Test3}" /> 
+				<log message="Headers in the OnException block after throwing exception : ${exchangeProperty.Test4}" /> 
+			</onException>			 
+        </route>
+		
+    </camelContext>
+
+</blueprint>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+ 
+         
+
+   <!-- processor which can format to csv -->
+   <bean id="csvProcessor" class="com.redhat.camel.spring.OrderToCsvProcessor"/>
+<camelContext xmlns="http://camel.apache.org/schema/spring">   
+   <route id="csv2">
+    <from uri="file:src/data?noop=true"/>
+    <bean ref="csvProcessor"/>
+    <to uri="file://target/orders/received?fileName=report.csv"/>
+  </route>
+  
+ 
+</camelContext>
+</beans>
+

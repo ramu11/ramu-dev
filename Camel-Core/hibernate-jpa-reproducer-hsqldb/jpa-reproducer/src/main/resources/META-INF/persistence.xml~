@@ -1,0 +1,14 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+	<persistence-unit name="jpa-repository" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>osgi:service/jdbc/jpadatasource</jta-data-source>
+		<class>com.mycompany.test.jpa.model.BasicSystem</class>
+		<properties>
+			<property name="hibernate.connection.driver_class" value="org.hsqldb.jdbc.JDBCDriver" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.cache.use_second_level_cache" value="false" />
+		</properties>
+	</persistence-unit>
+</persistence>

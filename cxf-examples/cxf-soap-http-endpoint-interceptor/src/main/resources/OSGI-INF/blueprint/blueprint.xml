@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.2.0"
+           xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+           xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+           xmlns:sec="http://cxf.apache.org/configuration/security"
+           xmlns:httpj="http://cxf.apache.org/transports/http-jetty/configuration"
+           xmlns:jaxws="http://cxf.apache.org/jaxws"
+           xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+       http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd
+       http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+       http://cxf.apache.org/transports/http-jetty/configuration http://cxf.apache.org/schemas/configuration/http-jetty.xsd
+       http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd">
+       
+
+   
+    
+    <bean id="CDataWriterInterceptor" class="com.mycompany.cxf.soap.endpoint.CDataWriterInterceptor" />
+
+    <cxf:cxfEndpoint id="personService"
+                   address="http://localhost:9006/soap/personService"
+                   serviceClass="com.mycompany.cxf.soap.model.PersonService">
+        
+     <cxf:outInterceptors>
+        <ref component-id = "CDataWriterInterceptor"/>
+    </cxf:outInterceptors>        
+        <cxf:properties>
+            <entry key="loggingFeatureEnabled" value="true"/>
+            <entry key="dataFormat" value="PAYLOAD" /> 
+        </cxf:properties>
+        
+    </cxf:cxfEndpoint>
+                          
+    <bean id="personBean" class="com.mycompany.cxf.soap.model.PersonServiceImpl"/>  
+                          
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint">
+        <route id="PersonServiceRoute">
+            <from uri="cxf:bean:personService"/>
+            <choice>
+                <when>
+                    <simple>${in.header.operationName} == 'getPerson'</simple>
+                    <bean ref="personBean" method="getPerson"/>
+                </when>
+            </choice>
+            <log message="The message contains ${body}"/>
+        </route> 
+    </camelContext>
+</blueprint>

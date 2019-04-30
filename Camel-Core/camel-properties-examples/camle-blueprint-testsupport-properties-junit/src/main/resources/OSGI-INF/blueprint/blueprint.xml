@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0      https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd            http://camel.apache.org/schema/blueprint      http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    
+    <cm:property-placeholder persistent-id="com.mycompany.camel.blueprint.property"
+		update-strategy="reload">
+	
+		<cm:default-properties>
+			<cm:property name="myMsg" value="${myMsg}" />
+			<cm:property name="period" value="${period}" /> 
+		</cm:default-properties>
+	</cm:property-placeholder>
+	
+    <camelContext id="MyDozerExample" xmlns="http://camel.apache.org/schema/blueprint">
+       
+        <route id="map">
+          <!-- #3 repeat period -->
+			<!-- <from uri="timer:foo?period={{period}}" /> -->
+			<from uri="timer:direct:start1" />
+            <to id="toBean" uri="bean:myBean?method=execute"/>
+            <to id="ToFile" uri="mock:result"/>
+        </route>
+    </camelContext>
+    <bean class="de.mypackage.MyBean" id="myBean">
+        <property name="test" value="${myMsg}"/>
+    </bean>
+       
+</blueprint>

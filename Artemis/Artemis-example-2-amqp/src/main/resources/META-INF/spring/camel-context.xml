@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+
+
+	<bean class="org.apache.qpid.jms.JmsConnectionFactory"
+		id="jmsConnectionFactory">
+		<property name="remoteURI" value="amqp://localhost:5672" />
+	</bean>
+	
+	<!-- <bean class="org.apache.activemq.jms.pool.PooledConnectionFactory"
+		id="pooledArtemisConnectionFactory">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="maxConnections" value="3" />
+		<property name="maximumActiveSessionPerConnection" value="10" />
+	</bean> -->
+	
+	<bean class="org.apache.camel.component.amqp.AMQPComponent"
+		id="amqp">
+		<property name="connectionFactory"
+			ref="jmsConnectionFactory" />
+	</bean>
+
+	
+	<camelContext id="_camelContext1"
+		xmlns="http://camel.apache.org/schema/spring">
+
+
+     <route id="testroute">
+			<from id="testfrom1" uri="file:src/main/data?noop=true" />
+			<log id="test-1og1" message=" Transferring" />
+			<to id="test-to1" uri="direct:exampleQueueRoute" />
+
+		</route>
+		
+		
+     <route id="testProducer">
+			<from  uri="direct:exampleQueueRoute" />
+			<log 
+				message=" producing to amqp:queue:testQueue" />
+			<to 
+				uri="amqp:queue:testQueue" />
+				
+		</route>
+		
+		<!--  <route id="testConsumer">
+			<from  uri="amqp:queue:testQueue" />
+			<log 
+				message=" consuming to amqp:queue:testQueue" />
+			<to  uri="file:src/main/test1" />
+				
+		</route> -->
+		
+
+
+     <!-- virtual topics -->
+	<!-- 	<route id="test1">
+			<from id="testfrom1" uri="file:src/main/data?noop=true" />
+			<log id="test-1og1" message=" Transferring" />
+			<to id="test-to1" uri="direct:exampleVirtualTopic" />
+
+		</route>
+
+
+		<route id="test3">
+			<from id="test-from3" uri="direct:exampleVirtualTopic" />
+			<log id="test-log3"
+				message=" Transferring to amqp:topic:ExampleVirtualTopic" />
+			<to id="test-to3"
+				uri="amqp:topic:VirtualTopic.Orders" />
+				
+				
+		</route>
+
+		  <route id="test4">
+			<from id="test-from4"
+				uri="amqp:topic:VirtualTopic.Orders::Consumer.B.VirtualTopic.Orders" />
+			<log id="test-log4" message=" consuming amqp:topic:Consumer.B.VirtualTopic.Orders" />
+			<to id="test-to4" uri="file:src/main/test1" />
+		</route> 
+		
+		 <route id="test5">
+			<from id="test-from5"
+				uri="amqp:topic:VirtualTopic.Orders::Consumer.C.VirtualTopic.Orders" />
+			<log id="test-log5" message=" consuming amqp:topic:Consumer.C.VirtualTopic.Orders" />
+			<to id="test-to5" uri="file:src/main/test1" />
+		</route>  -->
+		
+		
+
+		<!--  <route id="test6">
+            <from id="test-from6" uri="amqp:topic:VirtualTopic.Orders?clientId=Consumer.A&amp;durableSubscriptionName=VirtualTopic.Orders"/>
+            <log id="test-log6" message=" consuming amqp:topic"/>
+            <to id="test-to6" uri="file:src/main/test2"/>
+        </route>  -->
+
+	</camelContext>
+</beans>

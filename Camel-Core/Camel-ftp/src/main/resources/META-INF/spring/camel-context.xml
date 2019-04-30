@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<!-- here is a sample which processes the input files (leaving them in place 
+		- see the 'noop' flag) then performs content based routing on the message 
+		using XPath -->
+		
+		<bean id="helloBean" class="com.redhat.ftp.HelloBean">
+	</bean>	
+
+	 <bean id="ftpServer" class="com.redhat.ftp.FtpServerBean"
+		init-method="startServer" destroy-method="shutdownServer" />
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+  <route>
+    <from uri="ftp://rider:secret@localhost:21000/?passiveMode=true&amp;disconnect=true&amp;throwExceptionOnConnectFailed=true&amp;maximumReconnectAttempts=0&amp;localWorkDirectory=/tmp&amp;fileName=cases.zip"/>
+    <bean ref="helloBean" method="process"/>
+    <to uri="file://src/data"/>
+    <log message="Completed"/>
+  </route>
+</camelContext>
+
+</beans>

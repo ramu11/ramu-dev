@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+	<bean id="messageRouter" class="com.redhat.recipient.aggregate.MessageRouter">
+
+	</bean>
+
+	<bean id="myStrategy" class="com.redhat.recipient.aggregate.MyOwnAggregationStrategy" />
+
+	<camelContext xmlns="http://camel.apache.org/schema/blueprint">
+		<route>
+			<from uri="file:src/data?noop=true" />
+			<setHeader headerName="endpointsToBeTriggered">
+				<method ref="messageRouter" method="getEndpointsToRouteMessageTo" />
+			</setHeader>
+			<recipientList strategyRef="myStrategy">
+				<header>endpointsToBeTriggered</header>
+			</recipientList>
+			<log message="Aggregated Body: ${body}" />
+			<to uri="direct:normalbilling" />
+
+		</route>
+
+		<route>
+			<from uri="direct:order.priority" />
+			<setBody>
+				<simple trim="false">priority</simple>
+			</setBody>
+			<log message="Priority triggered" />
+			<to uri="mock:order.priority" />
+		</route>
+
+		<route>
+			<from uri="direct:order.normal" />
+				<setBody>
+				<simple trim="false">normal</simple>
+			</setBody>
+			<log message="normal triggered" />
+			<to uri="mock:order.normal" />
+		</route>
+
+		<route>
+			<from uri="direct:billing" />
+				<setBody>
+				<simple trim="false">billing</simple>
+			</setBody>
+			<log message="billing triggered" />
+			<to uri="mock:billing" />
+		</route>
+
+		<route>
+			<from uri="direct:unrecognized" />
+			<log message="unrecognized triggered" />
+			<to uri="mock:unrecognized" />
+		</route>
+		
+		<route>
+			<from uri="direct:normalbilling" />
+			<log message="normalbilling route triggered" />
+			<to uri="mock:normalbilling" />
+		</route>
+	</camelContext>
+
+</blueprint>

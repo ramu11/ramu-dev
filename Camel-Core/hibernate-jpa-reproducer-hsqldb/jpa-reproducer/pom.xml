@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.mycompany.esb.test</groupId>
+  <artifactId>jpa-reproducer</artifactId>
+  <packaging>bundle</packaging>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>Finalist :: JPA Reproducer</name>
+  <dependencies>
+    <dependency>
+	    <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.2.19.Final</version>
+	</dependency>
+
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>2.4.0</version>
+        <extensions>true</extensions>
+        <executions>
+          <execution>
+            <id>Create OSGi bundle</id>
+            <goals>
+              <goal>bundle</goal>
+            </goals>
+            <configuration>
+              <instructions>
+                <Import-Package>
+                  <!-- Packages which are not auto discovered by the bundle plugin -->
+javax.persistence.criteria;version="[2.0,2.1)",
+javax.sql,
+org.hibernate;version="[4.2,4.3)",
+org.hibernate.proxy;version="[4.2,4.3)",
+javassist.util.proxy,
+org.hibernate.ejb;version="[4.2,5)"
+org.hibernate.proxy;version="[4.2,4.3)",*
+                </Import-Package>
+                <Bundle-SymbolicName>jpa-repository</Bundle-SymbolicName>
+                <JPA-PersistenceUnits>jpa-repository</JPA-PersistenceUnits>
+                <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
+              </instructions>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.fuse.bom</groupId>
+        <artifactId>jboss-fuse-parent</artifactId>
+        <version>6.2.0.redhat-133</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>    
+    </dependencies>
+  </dependencyManagement>
+  <repositories>
+    <repository>
+      <id>org.jboss.repository.fs.releases</id>
+      <name>JBoss FS Repository</name>
+      <url>https://maven.repository.redhat.com/ga/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+  </repositories>
+</project>

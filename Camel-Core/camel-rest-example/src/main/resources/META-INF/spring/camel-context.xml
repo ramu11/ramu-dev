@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:amq="http://activemq.apache.org/schema/core"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd        http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+    
+   <camelContext id="camelContext-87aa5925-e951-425d-b911-1ce8c888bb6d" xmlns="http://camel.apache.org/schema/spring">
+   
+  <!--  <restConfiguration bindingMode="auto" component="netty4-http" host="localhost" port="8080" />  -->
+    <!--  <restConfiguration bindingMode="auto" component="undertow" host="localhost" port="8080" /> -->
+     <restConfiguration bindingMode="auto" component="restlet" host="localhost" port="8080" />  
+   
+     
+    
+    <rest path="/say">
+      <get uri="/hello">
+        <to uri="direct:hello"/>
+      </get>
+      <get uri="/bye" consumes="application/json">
+        <to uri="direct:bye"/>
+      </get>
+      <post uri="/bye">
+        <to uri="mock:update"/>
+      </post> 
+    </rest>
+    <route>
+      <from uri="direct:hello"/>
+      <setBody>
+        <simple>${body}Message at ${date:now:yyyy-MM-dd HH:mm:ss}</simple>
+      </setBody>
+       <to uri="log:'Hello World'" />
+    </route>
+   <route>
+      <from uri="direct:bye"/>
+      <transform>
+        <constant>Bye World</constant>
+      </transform>
+    </route> 
+    </camelContext>
+</beans>

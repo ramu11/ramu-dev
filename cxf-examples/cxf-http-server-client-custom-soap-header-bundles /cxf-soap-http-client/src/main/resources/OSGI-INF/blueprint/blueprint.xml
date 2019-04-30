@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.2.0"
+            xmlns:http="http://cxf.apache.org/transports/http/configuration"
+           xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+           xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+           xmlns:sec="http://cxf.apache.org/configuration/security"
+           xmlns:httpj="http://cxf.apache.org/transports/http-jetty/configuration"
+           xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+           xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+       http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd
+       http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+       http://cxf.apache.org/transports/http-jetty/configuration http://cxf.apache.org/schemas/configuration/http-jetty.xsd
+       http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd
+       http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd">
+
+
+
+  <cxf:cxfEndpoint id="personServiceClient"
+                          address="http://localhost:9006/soap/personService"
+                          serviceClass="com.mycompany.cxf.soap.model.PersonService" > 
+                          
+     <cxf:inInterceptors>
+          <bean class="com.mycompany.cxf.soap.endpoint.SoapActionInInterceptor" />
+    </cxf:inInterceptors>
+     <cxf:outInterceptors>
+          <bean class="com.mycompany.cxf.soap.endpoint.SoapActionOutInterceptor" />
+   </cxf:outInterceptors>    
+</cxf:cxfEndpoint>                 
+                         
+      <bean id="req" class="com.mycompany.cxf.soap.endpoint.TestRequest"/>   
+       <bean id="InsertRequestOutHeaderProcessor" class="com.mycompany.cxf.soap.endpoint.InsertRequestOutHeaderProcessor"/>   
+           
+                          
+   <!--   <http:conduit name="https://localhost:9006/*">
+        <http:client ConnectionTimeout="3000000" ReceiveTimeout="3000000"/>
+        <http:tlsClientParameters disableCNCheck="true" >
+            <sec:keyManagers keyPassword="CertPassword" >
+                <sec:keyStore  file="/home/kkakarla/Development/Soft/fuse-6.2.1/jboss-fuse-6.2.1.redhat-084/etc/Client.jks" password="CertPassword" type="JKS"/>
+            </sec:keyManagers> 
+            <sec:trustManagers >
+                <sec:keyStore  file="/home/kkakarla/Development/Soft/fuse-6.2.1/jboss-fuse-6.2.1.redhat-084/etc/Client.jks" password="CertPassword" type="JKS"/>
+            </sec:trustManagers>
+        </http:tlsClientParameters>
+    </http:conduit>  -->
+                         
+  
+  <camelContext xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="PersonServiceRoute">
+       <from uri="timer://foo?fixedRate=true&amp;period=60000"/>
+       <to uri="direct:start"/>
+       </route>
+       <route>
+       <from uri="direct:start"/>
+       <to uri="bean:req?method=personRequest" /> 
+     <!--     <setHeader headerName="SOAPAction">
+            	<simple>http://model.soap.cxf.mycompany.com/getPerson</simple>
+            </setHeader>-->
+            
+            <process ref="InsertRequestOutHeaderProcessor" />   
+            
+            <setHeader headerName="operationNamespace">
+                <simple>http://model.soap.cxf.mycompany.com/</simple>
+            </setHeader>
+            
+            <setHeader headerName="operationName">
+                <simple>getPerson</simple>
+            </setHeader>
+           
+       <to uri="cxf:bean:personServiceClient?dataFormat=POJO"/>
+          <to uri="bean:req?method=getPersonResponse" />
+       <log message="The message contains ${body}"/>
+    </route>
+</camelContext>
+</blueprint>
