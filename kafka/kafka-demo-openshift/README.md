@@ -73,6 +73,10 @@ $ keytool -import -trustcacerts -alias root -file src/main/resources/ca.crt -key
 Now you can run the Fuse application using the maven command:
 mvn spring-boot:run
 
+with SSL DEBUG enabled 
+mvn  spring-boot:run -Djavax.net.debug=ssl  >>/home/kkakarla/Downloads/ssl-debug.txt
+
+
 <!--$ mvn -Drun.jvmArguments="-Dbootstrap.server=`oc get routes my-cluster-kafka-bootstrap -o=jsonpath='{.status.ingress[0].host}{"\n"}'`:443" clean package spring-boot:run -->
 
 
@@ -98,6 +102,8 @@ To access externally create route
 oc apply -f kafkaTopic.yaml
 'oc get routes' displays the host to be used as bootstrap url in client
 ex: oc get routes my-cluster-kafka-bootstrap 
+
+
 
 
 
