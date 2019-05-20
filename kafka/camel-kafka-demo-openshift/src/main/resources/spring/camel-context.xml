@@ -6,18 +6,36 @@
       <!-- <property name="brokers" value="my-cluster-kafka-bootstrap:9094"/> --> <!--internal -->
        <property name="brokers" value="my-cluster-kafka-bootstrap-my-project.apps.kakarlaamqstreams.lab.pnq2.cee.redhat.com:443"/>
     </bean>
+    
+     <bean id="kafkaProcessor" class="com.redhat.kafkademo.KafkaProcessor"/>
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
-        <route id="consumer-route">
-            <from id="kafka-consumer" uri="kafka:my-topic?securityProtocol=SSL&amp;sslTruststoreLocation=src/main/resources/client.truststore.jks&amp;sslTruststorePassword=amqstreams123"/>
-            <log id="route-log" message="consumer >>> ${body}"/>
-        </route>
-        <route id="producer-route">
-            <from id="route-timer" uri="timer://foo?period=1000"/>
-            <setBody id="route-setBody">
-                <simple>Hello World from camel-context.xml with ID ${id}</simple>
+        <route id="consumer-route1">
+            <from id="kafka-consumer-1" uri="kafka:my-topic-abc?securityProtocol=SSL&amp;sslTruststoreLocation=src/main/resources/client.truststore.jks&amp;sslTruststorePassword=amqstreams123&amp;groupId=cameltest"/>
+            <log id="route-log-1" message="consumer >>> ${body}"/>
+        </route> 
+        
+         <route id="consumer-route2">
+            <from id="kafka-consumer-2" uri="kafka:my-topic-abc?securityProtocol=SSL&amp;sslTruststoreLocation=src/main/resources/client.truststore.jks&amp;sslTruststorePassword=amqstreams123&amp;groupId=cameltest"/>
+            <log id="route-log-2" message="consumer >>> ${body}"/>
+        </route> 
+        
+        <route id="producer-route-1">
+            <from id="route-timer-1" uri="timer://foo?period=1000"/>
+            <setBody id="route-setBody-1">
+                <simple>This is first producer: ${id}</simple>
             </setBody>
-            <to id="_kafka1" uri="kafka:my-topic?securityProtocol=SSL&amp;sslTruststoreLocation=src/main/resources/client.truststore.jks&amp;sslTruststorePassword=amqstreams123"/>
-            <log id="route-log-producer" message="producer >>> ${body}"/>
+            <to id="_kafka1" uri="kafka:my-topic-abc?securityProtocol=SSL&amp;sslTruststoreLocation=src/main/resources/client.truststore.jks&amp;sslTruststorePassword=amqstreams123&amp;partitionKey=0&amp;key=${id}"/>
+            <log id="route-log-producer-1" message="producer >>> ${body}"/>
+            <bean ref="kafkaProcessor"/>
         </route>
+         <route id="producer-route-2">
+            <from id="route-timer-2" uri="timer://foo?period=1000"/>
+            <setBody id="route-setBody-2">
+                <simple>This is second producer: ${id}</simple>
+            </setBody>
+            <to id="_kafka2" uri="kafka:my-topic-abc?securityProtocol=SSL&amp;sslTruststoreLocation=src/main/resources/client.truststore.jks&amp;sslTruststorePassword=amqstreams123&amp;partitionKey=1&amp;key=${id}"/>
+            <log id="route-log-producer-2" message="producer >>> ${body}"/>
+            <bean ref="kafkaProcessor"/>
+        </route> 
     </camelContext>
 </beans>
