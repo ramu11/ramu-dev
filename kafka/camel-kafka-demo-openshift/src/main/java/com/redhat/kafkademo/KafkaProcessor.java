@@ -16,7 +16,7 @@ public class KafkaProcessor implements Processor{
 		
 		for(RecordMetadata rd: recordMetaData1) {
 			
-			System.out.println("partiotion is:" +rd.partition());
+			System.out.println("producer partiotion is:" +rd.partition());
 		}
 		
 	}

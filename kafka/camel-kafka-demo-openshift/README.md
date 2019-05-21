@@ -47,3 +47,10 @@ Then create the quickstart template:
 
 Now when you use "Add to Project" button in the OpenShift console, you should see a template for this quickstart. 
 
+./kafka-topics.sh --zookeeper localhost:2181 --describe --topic my-topic-abc
+
+Scaling up a Kafka cluster Reassign partiotions:
+cat topic-reassign.json | oc rsh -c kafka my-cluster-kafka-1 /bin/bash -c 'cat >/tmp/topic-reassign.json'
+oc rsh -c kafka my-cluster-kafka-1  bin/kafka-reassign-partitions.sh --zookeeper localhost:2181  --reassignment-json-file /tmp/topic-reassign.json --execute
+
+

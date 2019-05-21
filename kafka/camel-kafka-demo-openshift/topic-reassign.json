@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "partitions": [
+    {
+      "topic": "my-topic-abc",
+      "partition": 2,
+      "replicas": [0,1,2]
+    }
+  ]
+}
