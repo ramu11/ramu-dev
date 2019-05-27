@@ -26,26 +26,21 @@ To list all the running pods:
 
     oc get pods
 
-Then find the name of the pod that runs this quickstart, and output the logs from the running pods with:
-
-    oc logs <name of pod>
-
-You can also use the OpenShift [web console](https://docs.openshift.com/container-platform/3.3/getting_started/developers_console.html#developers-console-video) to manage the
-running pods, and view logs and much more.
-
-### Running via an S2I Application Template
-
-Application templates allow you deploy applications to OpenShift by filling out a form in the OpenShift console that allows you to adjust deployment parameters.  This template uses an S2I source build so that it handle building and deploying the application for you.
-
-First, import the Fuse image streams:
-
-    oc create -f https://raw.githubusercontent.com/jboss-fuse/application-templates/GA/fis-image-streams.json
-
-Then create the quickstart template:
-
-    oc create -f https://raw.githubusercontent.com/jboss-fuse/application-templates/GA/quickstarts/spring-boot-camel-template.json
-
-Now when you use "Add to Project" button in the OpenShift console, you should see a template for this quickstart. 
+steps:
+oc login -u system:admin
+oc adm policy add-cluster-role-to-user cluster-admin quicklab
+ oc new-project my-project2
+ sed -i 's/namespace: .*/namespace: my-project2/' install/cluster-operator/*RoleBinding*.yaml
+ oc project my-project2
+ oc apply -f examples/templates/cluster-operator -n my-project2
+ oc adm policy add-cluster-role-to-user strimzi-cluster-operator-namespaced --serviceaccount strimzi-cluster-operator -n my-project2
+ oc adm policy add-cluster-role-to-user strimzi-entity-operator --serviceaccount strimzi-cluster-operator -n my-project2
+ oc adm policy add-cluster-role-to-user strimzi-topic-operator --serviceaccount strimzi-cluster-operator -n my-project2
+ oc apply -f install/cluster-operator -n my-project2
+ oc apply -f examples/kafka/kafka-persistent.yaml (or) oc apply -f examples/kafka/kafka-jbod.yaml
+ oc apply -f kafkaTopic.yaml
+ oc get pods;
+ oc get pods -w
 
 ./kafka-topics.sh --zookeeper localhost:2181 --describe --topic my-topic-abc
 
