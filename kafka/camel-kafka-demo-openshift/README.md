@@ -27,25 +27,41 @@ To list all the running pods:
     oc get pods
 
 steps:
-oc login -u system:admin
-oc adm policy add-cluster-role-to-user cluster-admin quicklab
- oc new-project my-project2
- sed -i 's/namespace: .*/namespace: my-project2/' install/cluster-operator/*RoleBinding*.yaml
- oc project my-project2
- oc apply -f examples/templates/cluster-operator -n my-project2
- oc adm policy add-cluster-role-to-user strimzi-cluster-operator-namespaced --serviceaccount strimzi-cluster-operator -n my-project2
- oc adm policy add-cluster-role-to-user strimzi-entity-operator --serviceaccount strimzi-cluster-operator -n my-project2
- oc adm policy add-cluster-role-to-user strimzi-topic-operator --serviceaccount strimzi-cluster-operator -n my-project2
- oc apply -f install/cluster-operator -n my-project2
- oc apply -f examples/kafka/kafka-persistent.yaml (or) oc apply -f examples/kafka/kafka-jbod.yaml
- oc apply -f kafkaTopic.yaml
- oc get pods;
- oc get pods -w
 
-./kafka-topics.sh --zookeeper localhost:2181 --describe --topic my-topic-abc
+   oc login -u system:admin
+
+   oc adm policy add-cluster-role-to-user cluster-admin quicklab
+
+   oc new-project my-project
+
+   sed -i 's/namespace: .*/namespace: my-project/' install/cluster-operator/*RoleBinding*.yaml
+
+   oc project my-project
+
+   oc apply -f examples/templates/cluster-operator -n my-project
+
+   oc adm policy add-cluster-role-to-user strimzi-cluster-operator-namespaced --serviceaccount strimzi-cluster-operator -n my-project
+
+   oc adm policy add-cluster-role-to-user strimzi-entity-operator --serviceaccount strimzi-cluster-operator -n my-project
+
+   oc adm policy add-cluster-role-to-user strimzi-topic-operator --serviceaccount strimzi-cluster-operator -n my-project
+
+   oc apply -f install/cluster-operator -n my-project
+
+   oc apply -f examples/kafka/kafka-persistent.yaml (or) oc apply -f examples/kafka/kafka-ephemeral.yaml
+
+   oc apply -f kafkaTopic.yaml
+
+   oc get pods
+
+   oc get pods -w
+
+   ./kafka-topics.sh --zookeeper localhost:2181 --describe --topic my-topic-abc
 
 Scaling up a Kafka cluster Reassign partiotions:
-cat topic-reassign.json | oc rsh -c kafka my-cluster-kafka-1 /bin/bash -c 'cat >/tmp/topic-reassign.json'
-oc rsh -c kafka my-cluster-kafka-1  bin/kafka-reassign-partitions.sh --zookeeper localhost:2181  --reassignment-json-file /tmp/topic-reassign.json --execute
+
+   cat topic-reassign.json | oc rsh -c kafka my-cluster-kafka-1 /bin/bash -c 'cat >/tmp/topic-reassign.json'
+
+   oc rsh -c kafka my-cluster-kafka-1  bin/kafka-reassign-partitions.sh --zookeeper localhost:2181  --reassignment-json-file /tmp/topic-reassign.json --execute
 
 
