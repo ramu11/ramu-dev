@@ -12,10 +12,6 @@ The example can be built with
 
 ### Running the example in OpenShift
 
-It is assumed that:
-- OpenShift platform is already running, if not you can find details how to [Install OpenShift at your site](https://docs.openshift.com/container-platform/3.3/install_config/index.html).
-- Your system is configured for Fabric8 Maven Workflow, if not you can find a [Get Started Guide](https://access.redhat.com/documentation/en/red-hat-jboss-middleware-for-openshift/3/single/red-hat-jboss-fuse-integration-services-20-for-openshift/)
-
 The example can be built and run on OpenShift using a single goal:
 
     mvn fabric8:deploy
@@ -25,6 +21,13 @@ When the example runs in OpenShift, you can use the OpenShift client tool to ins
 To list all the running pods:
 
     oc get pods
+    
+To Run the example as external client,first extract/import the openshift kafka cluster cert
+
+   oc extract secret/my-cluster-cluster-ca-cert --keys=ca.crt --to=- > src/main/resources/ca.crt
+   keytool -keystore src/main/resources/client.truststore.jks -alias CARoot -import -file src/main/resources/ca.crt
+   keytool -import -trustcacerts -alias root -file src/main/resources/ca.crt -keystore src/main/resources/client.truststore.jks -storepass  amqstreams123 -noprompt
+
 
 steps:
 
