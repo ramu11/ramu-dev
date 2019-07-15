@@ -48,6 +48,7 @@ public class CustomKafkaAvroDeserializer extends AbstractKafkaAvroDeserializer  
   @Override
   public Object deserialize(String s, byte[] bytes) {
 	    LOG.info("ENTER CustomKafkaAvroDeserializer  : deserialize method ");
+	   // LOG.info("ENTER CustomKafkaAvroDeserializer string :" +deserialize(bytes).toString());
 		return deserialize(bytes).toString();
   }
   

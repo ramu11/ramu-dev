@@ -14,7 +14,7 @@ public class KafkaAvroMessageProcessor  implements Processor {
 		 
 			Employee emp = Employee.newBuilder()
 					.setFirstName("kakarla")
-					.setLastName("Ramu")
+					.setLastName("Ranjith")
 					.setBirthDate(new java.util.Date().getTime())
 					.build();
 			

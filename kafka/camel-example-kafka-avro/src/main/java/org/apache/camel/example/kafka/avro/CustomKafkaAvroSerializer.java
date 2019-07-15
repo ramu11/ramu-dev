@@ -39,7 +39,8 @@ public class CustomKafkaAvroSerializer extends AbstractKafkaAvroSerializer  impl
 		 LOG.info("****************serialize*******************************");
 		 LOG.info("Serialize method: topic " + topic);
 		 LOG.info("Serialize method: byte " + record);
-		   OkHttpClient client = new OkHttpClient();
+		 
+		/* OkHttpClient client = new OkHttpClient();
 		//SHOW ALL VERSIONS OF EMPLOYEE
 		 Request  request = new Request.Builder()
 	                .url("http://localhost:8081/subjects/employees-avro-value/versions/2")
@@ -48,10 +49,12 @@ public class CustomKafkaAvroSerializer extends AbstractKafkaAvroSerializer  impl
 		try {
 			output = client.newCall(request).execute().body().string();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
-		LOG.info("Serialize method ouput is :" +output);
+		LOG.info("Serialize method ouput is :" +output);*/
+	
+		
 		 return serializeImpl(
 			        getSubjectName(topic, isKey, record, AvroSchemaUtils.getSchema(record)), record);
 
@@ -85,8 +88,7 @@ public class CustomKafkaAvroSerializer extends AbstractKafkaAvroSerializer  impl
 
 @Override
 public void configure(Map<String, ?> arg0, boolean arg1) {
-	// TODO Auto-generated method stub
-	configure(null);
+    configure(null);
 	
 }
 }

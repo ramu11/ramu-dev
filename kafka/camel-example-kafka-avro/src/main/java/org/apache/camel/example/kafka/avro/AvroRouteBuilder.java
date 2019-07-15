@@ -22,13 +22,15 @@ public class AvroRouteBuilder extends RouteBuilder {
 	public void configure() throws Exception {
 		
 		from("timer://foo?period={{period}}")
-		.setHeader(KafkaConstants.KEY, constant("emp")) 
-		.setHeader(KafkaConstants.PARTITION_KEY,constant("0"))
 	    .setBody(constant("Hi This is Avro example"))
 	    .process(new KafkaAvroMessageProcessor())
 	    .to("kafka:{{producer.topic}}?brokers={{kafka.bootstrap.url}}&keySerializerClass=org.apache.kafka.common.serialization.StringSerializer&serializerClass=org.apache.camel.example.kafka.avro.CustomKafkaAvroSerializer");
 	       		
-	  
+		from("timer://foo?period={{period}}")
+		.from("kafka:{{consumer.topic}}?brokers={{kafka.bootstrap.url}}&keyDeserializer=org.apache.kafka.common.serialization.StringDeserializer&valueDeserializer=org.apache.camel.example.kafka.avro.CustomKafkaAvroDeserializer")
+		 .process(new KafkaAvroMessageConsumerProcessor())
+		.log("${body}");
+		
 	}
 	  
 
