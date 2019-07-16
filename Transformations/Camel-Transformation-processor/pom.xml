@@ -10,7 +10,7 @@
   <properties>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <version.camel>2.23.2</version.camel>
+    <version.camel>3.0.0-SNAPSHOT</version.camel>
      <slf4j.version>1.7.26</slf4j.version>
      <log4j.version>1.2.17</log4j.version>
   </properties>
