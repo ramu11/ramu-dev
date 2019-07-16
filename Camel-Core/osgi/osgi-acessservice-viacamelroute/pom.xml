@@ -69,12 +69,12 @@
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-core</artifactId>
-      <version>2.15.1.redhat-620133</version>
+      <version>3.0.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-blueprint</artifactId>
-      <version>2.15.1.redhat-620133</version>
+      <version>3.0.0-SNAPSHOT</version>
     </dependency>
 
     <!-- logging -->
@@ -98,7 +98,7 @@
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-test-blueprint</artifactId>
-      <version>2.15.1.redhat-620133</version>
+      <version>3.0.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
@@ -155,7 +155,7 @@
       <plugin>
         <groupId>org.apache.camel</groupId>
         <artifactId>camel-maven-plugin</artifactId>
-        <version>2.15.1.redhat-620133</version>
+        <version>3.0.0-SNAPSHOT</version>
         <configuration>
           <useBlueprint>true</useBlueprint>
         </configuration>

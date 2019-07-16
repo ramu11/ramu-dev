@@ -15,12 +15,12 @@
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-core</artifactId>
-      <version>2.15.1.redhat-620133</version>
+      <version>3.0.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-spring</artifactId>
-      <version>2.15.1.redhat-620133</version>
+      <version>3.0.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -40,18 +40,18 @@
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-test-spring</artifactId>
-      <version>2.15.1.redhat-620133</version>
+      <version>3.0.0-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-quartz</artifactId>
-      <version>2.15.1.redhat-620133</version>
+      <version>3.0.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-ftp</artifactId>
-      <version>2.15.1.redhat-620133</version>
+      <version>3.0.0-SNAPSHOT</version>
     </dependency>
      <!-- for simulating with a FTP server -->
     <dependency>
@@ -140,7 +140,7 @@
       <plugin>
         <groupId>org.apache.camel</groupId>
         <artifactId>camel-maven-plugin</artifactId>
-        <version>2.15.1.redhat-620133</version>
+        <version>3.0.0-SNAPSHOT</version>
       </plugin>
     </plugins>
   </build>
