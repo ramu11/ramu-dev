@@ -25,8 +25,8 @@ public class ImportKerasConfigForIris {
 		 	  
 		  
 		  MultiLayerNetwork model = KerasModelImport.importKerasSequentialModelAndWeights
-				  ("/home/kkakarla/Development/git/Fuse-OsgI/tensorflow-examples/Iris_dataset_deep_learning_example/model_iris.json", 
-						  "/home/kkakarla/Development/git/Fuse-OsgI/tensorflow-examples/Iris_dataset_deep_learning_example/model_iris.h5" );
+				  ("/home/kkakarla/development/git/ramu-dev/tensorflow-examples/Iris_dataset_deep_learning_example/model_iris.json", 
+						  "/home/kkakarla/development/git/ramu-dev/tensorflow-examples/Iris_dataset_deep_learning_example/model_iris.h5" );
 
 		  
 		  int numLinesToSkip = 0;
