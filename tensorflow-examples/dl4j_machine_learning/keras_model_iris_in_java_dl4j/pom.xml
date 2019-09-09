@@ -21,6 +21,8 @@
          <tensorflow.version>1.13.1</tensorflow.version>
          <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+         <java.version>1.8</java.version>
+        <kafka.version>2.0.0</kafka.version>
 	</properties>
 
 	<dependencies>
@@ -41,6 +43,17 @@
 			<artifactId>libtensorflow_jni_gpu</artifactId>
 			<version>${tensorflow.version}</version>
 		</dependency>
+		  <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+        </dependency>
+        <!-- Apache Kafka Streams-->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+            <version>${kafka.version}</version>
+        </dependency>
     <!-- Junit -->
 		<dependency>
 			<groupId>junit</groupId>
