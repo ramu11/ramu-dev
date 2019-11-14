@@ -1,0 +1,25 @@
+2019-11-06 11:49:39,696 INFO  [org.apache.activemq.artemis.integration.bootstrap] AMQ101000: Starting ActiveMQ Artemis Server
+2019-11-06 11:49:39,720 INFO  [org.apache.activemq.artemis.core.server] AMQ221000: live Message Broker is starting with configuration Broker Configuration (clustered=true,journalDirectory=../shared/journal,bindingsDirectory=../shared/bindings,largeMessagesDirectory=../shared/large-messages,pagingDirectory=../shared/paging)
+2019-11-06 11:49:39,721 INFO  [org.apache.activemq.artemis.core.server] AMQ221006: Waiting to obtain live lock
+2019-11-06 11:49:39,745 INFO  [org.apache.activemq.artemis.core.server] AMQ221012: Using AIO Journal
+2019-11-06 11:49:39,779 INFO  [org.apache.activemq.artemis.core.server] AMQ221057: Global Max Size is being adjusted to 1/2 of the JVM max size (-Xmx). being defined as 1,073,741,824
+2019-11-06 11:49:39,845 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2019-11-06 11:49:39,846 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-amqp-protocol]. Adding protocol support for: AMQP
+2019-11-06 11:49:39,846 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-hornetq-protocol]. Adding protocol support for: HORNETQ
+2019-11-06 11:49:39,846 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-mqtt-protocol]. Adding protocol support for: MQTT
+2019-11-06 11:49:39,847 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-openwire-protocol]. Adding protocol support for: OPENWIRE
+2019-11-06 11:49:39,847 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-stomp-protocol]. Adding protocol support for: STOMP
+2019-11-06 11:49:39,892 INFO  [org.apache.activemq.artemis.core.server] AMQ221034: Waiting indefinitely to obtain live lock
+2019-11-06 11:49:39,892 INFO  [org.apache.activemq.artemis.core.server] AMQ221035: Live Server Obtained live lock
+2019-11-06 11:49:39,951 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address DLQ supporting [ANYCAST]
+2019-11-06 11:49:39,961 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue DLQ on address DLQ
+2019-11-06 11:49:40,002 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address ExpiryQueue supporting [ANYCAST]
+2019-11-06 11:49:40,004 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue ExpiryQueue on address ExpiryQueue
+2019-11-06 11:49:40,353 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started EPOLL Acceptor at localhost:61616 for protocols [CORE,MQTT,AMQP,STOMP,HORNETQ,OPENWIRE]
+2019-11-06 11:49:40,355 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started EPOLL Acceptor at localhost:5445 for protocols [HORNETQ,STOMP]
+2019-11-06 11:49:40,357 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started EPOLL Acceptor at localhost:5672 for protocols [AMQP]
+2019-11-06 11:49:40,359 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started EPOLL Acceptor at localhost:1883 for protocols [MQTT]
+2019-11-06 11:49:40,361 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started EPOLL Acceptor at localhost:61613 for protocols [STOMP]
+2019-11-06 11:49:40,472 INFO  [org.apache.activemq.artemis.core.server] AMQ221007: Server is now live
+2019-11-06 11:49:40,472 INFO  [org.apache.activemq.artemis.core.server] AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.9.0.redhat-00002 [localhost, nodeID=69e9a668-005d-11ea-a7eb-482ae343b22d] 
+2019-11-06 11:49:45,758 INFO  [org.apache.activemq.artemis.core.server] AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.9.0.redhat-00002 [69e9a668-005d-11ea-a7eb-482ae343b22d] stopped, uptime 6.052 seconds
