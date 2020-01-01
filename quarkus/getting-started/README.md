@@ -37,3 +37,13 @@ Or you can use Docker to build the native executable using: `./mvnw package -Pna
 You can then execute your binary: `./target/getting-started-1.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/building-native-image-guide .
+
+```
+
+oc new-app --name=quarkus-1 quay.io/quarkus/ubi-quarkus-native-s2i:19.2.1~https://github.com/ramu11/ramu-dev.git --context-dir=quarkus/getting-started 
+
+oc expose service quarkus-1
+
+export URL="http://$(oc get route | grep quarkus-1 | awk '{print $2}')"
+echo $URL
+curl $URL/hello
