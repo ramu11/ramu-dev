@@ -1,0 +1,6 @@
+mvn io.quarkus:quarkus-maven-plugin:1.1.0.Final:create \
+    -DprojectGroupId=org.redhat \
+    -DprojectArtifactId=getting-started \
+    -DclassName="org.redhat.quickstart.GreetingResource" \
+    -Dpath="/hello"
+ 
