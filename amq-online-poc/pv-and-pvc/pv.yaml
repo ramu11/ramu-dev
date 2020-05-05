@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    Description: 'Gluster-Internal: Dynamically provisioned PV'
+    gluster.kubernetes.io/heketi-volume-id: 973072b457c3f958c4993a856ee078c6
+    gluster.org/type: file
+    kubernetes.io/createdby: heketi-dynamic-provisioner
+    pv.beta.kubernetes.io/gid: "2000"
+    pv.kubernetes.io/bound-by-controller: "yes"
+    pv.kubernetes.io/provisioned-by: kubernetes.io/glusterfs
+  creationTimestamp: "2020-05-05T04:48:04Z"
+  finalizers:
+  - kubernetes.io/pv-protection
+  name: pvc-94833653-8e8b-11ea-a5d1-fa163ef63531
+  resourceVersion: "208164"
+  selfLink: /api/v1/persistentvolumes/pvc-94833653-8e8b-11ea-a5d1-fa163ef63531
+  uid: 9b165f8c-8e8b-11ea-a5d1-fa163ef63531
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 2Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: data-broker-d4f4441-gcnh-0
+    namespace: amq-online-infra
+    resourceVersion: "208115"
+    uid: 94833653-8e8b-11ea-a5d1-fa163ef63531
+  glusterfs:
+    endpoints: glusterfs-dynamic-94833653-8e8b-11ea-a5d1-fa163ef63531
+    path: vol_973072b457c3f958c4993a856ee078c6
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: glusterfs-storage
+status:
+  phase: Bound
+

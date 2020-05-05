@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    addressSpace: myspace
+    cluster_id: broker-d4f4441-gcnh
+    pv.kubernetes.io/bind-completed: "yes"
+    pv.kubernetes.io/bound-by-controller: "yes"
+    volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/glusterfs
+  creationTimestamp: "2020-05-05T04:47:53Z"
+  finalizers:
+  - kubernetes.io/pvc-protection
+  labels:
+    addresstype: queue
+    app: enmasse
+    infraType: standard
+    infraUuid: d4f4441
+    name: broker-d4f4441-gcnh
+    role: broker
+  name: data-broker-d4f4441-gcnh-0
+  namespace: amq-online-infra
+  resourceVersion: "208167"
+  selfLink: /api/v1/namespaces/amq-online-infra/persistentvolumeclaims/data-broker-d4f4441-gcnh-0
+  uid: 94833653-8e8b-11ea-a5d1-fa163ef63531
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: glusterfs-storage
+  volumeName: pvc-94833653-8e8b-11ea-a5d1-fa163ef63531
+status:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 2Gi
+  phase: Bound
+
