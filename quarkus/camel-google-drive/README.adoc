@@ -1,29 +1,8 @@
 https://developers.google.com/oauthplayground/
 
-
-{
-  "incompleteSearch": false, 
-  "files": [
-    {
-      "mimeType": "text/plain", 
-      "kind": "drive#file", 
-      "id": "17wor60abmAT5wF155jLkLs8KUCNnNAni", 
-      "name": "ReadMe.txt"
-    }
-  ], 
-  "kind": "drive#fileList"
-}
-
 Sign in with your Google account in the reserved area where you can configure Google APIs, from this URL: https://console.developers.google.com/apis/library
-https://www.iperiusbackup.net/en/how-to-enable-google-drive-api-and-get-client-credentials/
 
-gmail:satyayug2/password
-
-tests:https://github.com/apache/camel/tree/master/components/camel-google-drive/src/test/java/org/apache/camel/component/google/drive
 https://camel.apache.org/components/latest/google-drive-component.html
-
-
-
 
 
 TIP: Check the https://camel.apache.org/camel-quarkus/latest/first-steps.html[Camel Quarkus User guide] for prerequisites
@@ -78,10 +57,5 @@ $ ./target/*-runner
 ...
 ----
 
-output:
-2020-06-09 13:00:05,493 INFO  [gdrive-route] (Camel (camel-quarkus-xml) thread #0 - google-drive://drive-files/list) line  contains: {"etag":"\"W2D772gLFwe4Pft9nGD4qzGHe0M\"","incompleteSearch":false,"items":[{"alternateLink":"https://drive.google.com/file/d/17wor60abmAT5wF155jLkLs8KUCNnNAni/view?usp=drivesdk","appDataContents":false,"capabilities":{"canCopy":true,"canEdit":true},"copyable":true,"createdDate":"2020-06-09T04:49:42.982Z","downloadUrl":"https://www.googleapis.com/drive/v2/files/17wor60abmAT5wF155jLkLs8KUCNnNAni?alt=media&source=downloadUrl","editable":true,"embedLink":"https://drive.google.com/file/d/17wor60abmAT5wF155jLkLs8KUCNnNAni/preview?usp=drivesdk","etag":"\"MTU3ODQ5MDIxNzAwMA\"","explicitlyTrashed":false,"fileExtension":"txt","fileSize":"709","headRevisionId":"0B3Yw5OjxHuIOOHdXUnJsNUxRODVoZHpqdmhVT3ZIYThtT1JjPQ","iconLink":"https://drive-thirdparty.googleusercontent.com/16/type/text/plain","id":"17wor60abmAT5wF155jLkLs8KUCNnNAni","kind":"drive#file","labels":{"hidden":false,"restricted":false,"starred":false,"trashed":false,"viewed":true},"lastModifyingUser":{"displayName":"satya yug","emailAddress":"satyayug2@gmail.com","isAuthenticatedUser":true,"kind":"drive#user","permissionId":"04628297155854817287"},"lastModifyingUserName":"satya yug","lastViewedByMeDate":"2020-06-09T04:49:42.982Z","markedViewedByMeDate":"1970-01-01T00:00:00.000Z","md5Checksum":"6eeda95d2bbc689e7e05dd2655652522","mimeType":"text/plain","modifiedByMeDate":"2020-01-08T13:30:17.000Z","modifiedDate":"2020-01-08T13:30:17.000Z","originalFilename":"ReadMe.txt","ownerNames":["satya yug"],"owners":[{"displayName":"satya yug","emailAddress":"satyayug2@gmail.com","isAuthenticatedUser":true,"kind":"drive#user","permissionId":"04628297155854817287"}],"parents":[{"id":"0AHYw5OjxHuIOUk9PVA","isRoot":true,"kind":"drive#parentReference","parentLink":"https://www.googleapis.com/drive/v2/files/0AHYw5OjxHuIOUk9PVA","selfLink":"https://www.googleapis.com/drive/v2/files/17wor60abmAT5wF155jLkLs8KUCNnNAni/parents/0AHYw5OjxHuIOUk9PVA"}],"quotaBytesUsed":"709","selfLink":"https://www.googleapis.com/drive/v2/files/17wor60abmAT5wF155jLkLs8KUCNnNAni","shared":false,"spaces":["drive"],"thumbnailLink":"https://lh3.googleusercontent.com/aAHYI-9tKvQw-4d1Jeb5bTswgAHc3SWWCr8YZUBBF6_E_RLrw_EG3a-B1nL7IqpDCMUPZJ1VPds=s220","title":"ReadMe.txt","userPermission":{"etag":"\"JzsLZ-xSVTWW2hRfORN3kpEz-rE\"","id":"me","kind":"drive#permission","role":"owner","selfLink":"https://www.googleapis.com/drive/v2/files/17wor60abmAT5wF155jLkLs8KUCNnNAni/permissions/me","type":"user"},"version":"2","webContentLink":"https://drive.google.com/uc?id=17wor60abmAT5wF155jLkLs8KUCNnNAni&export=download","writersCanShare":true,"copyRequiresWriterPermission":false}],"kind":"drive#fileList","selfLink":"https://www.googleapis.com/drive/v2/files"}
-^C2020-06-09 13:00:05,830 INFO  [org.apa.cam.imp.eng.AbstractCamelContext] (Quarkus Main Thread) Apache Camel 3.3.0 (CamelContext: camel-quarkus-xml) is shutting down
-2020-06-09 13:00:05,833 INFO  [org.apa.cam.imp.eng.AbstractCamelContext] (Quarkus Main Thread) Apache Camel 3.3.0 (CamelContext: camel-quarkus-xml) uptime 21.267 seconds
-2020-06-09 13:00:05,833 INFO  [org.apa.cam.imp.eng.AbstractCamelContext] (Quarkus Main Thread) Apache Camel 3.3.0 (CamelContext: camel-quarkus-xml) is shutdown in 0.003 seconds
-2020-06-09 13:00:05,833 INFO  [io.quarkus] (Quarkus Main Thread) camel-quarkus-googledrive stopped in 0.004s
+
 
