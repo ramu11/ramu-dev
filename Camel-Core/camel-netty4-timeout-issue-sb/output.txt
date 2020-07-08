@@ -1,0 +1,433 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< org.example:camel-netty4-reproducer >-----------------
+[INFO] Building Fabric8 :: Quickstarts :: Spring-Boot :: Camel 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot-maven-plugin:7.4.0.fuse-740036-redhat-00002:run (default-cli) > test-compile @ camel-netty4-reproducer >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ camel-netty4-reproducer ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ camel-netty4-reproducer ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ camel-netty4-reproducer ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/kkakarla/development/camel-fuse-examples/camel-netty4-timeout-issue-sb/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ camel-netty4-reproducer ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot-maven-plugin:7.4.0.fuse-740036-redhat-00002:run (default-cli) < test-compile @ camel-netty4-reproducer <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:7.4.0.fuse-740036-redhat-00002:run (default-cli) @ camel-netty4-reproducer ---
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::       (v1.5.17.RELEASE)
+
+18:19:38.351 [main] INFO  org.example.Application - Starting Application on kkakarla.pnq.csb with PID 16526 (/home/kkakarla/development/camel-fuse-examples/camel-netty4-timeout-issue-sb/target/classes started by kkakarla in /home/kkakarla/development/camel-fuse-examples/camel-netty4-timeout-issue-sb)
+18:19:38.354 [main] INFO  org.example.Application - No active profile set, falling back to default profiles: default
+18:19:38.402 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@56176879: startup date [Sun Jun 21 18:19:38 IST 2020]; root of context hierarchy
+18:19:38.463 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.5.Final-redhat-2
+18:19:38.755 [main] TRACE o.a.c.c.n.s.NettyComponentAutoConfiguration$GroupConditions - Condition NettyComponentAutoConfiguration.GroupConditions on org.apache.camel.component.netty4.springboot.NettyComponentAutoConfiguration matched due to camel.component.netty4 enabled
+18:19:38.893 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [spring/camel-context.xml]
+18:19:40.013 [main] TRACE o.a.c.c.n.s.NettyComponentAutoConfiguration$GroupConditions - Condition NettyComponentAutoConfiguration.GroupConditions on org.apache.camel.component.netty4.springboot.NettyComponentAutoConfiguration matched due to camel.component.netty4 enabled
+18:19:40.578 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.apache.camel.spring.boot.CamelAutoConfiguration' of type [org.apache.camel.spring.boot.CamelAutoConfiguration$$EnhancerBySpringCGLIB$$56270164] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+18:19:40.823 [main] WARN  io.undertow.websockets.jsr - UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+18:19:40.844 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+18:19:40.844 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2445 ms
+18:19:41.022 [main] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+18:19:41.027 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'metricsFilter' to: [/*]
+18:19:41.028 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+18:19:41.028 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+18:19:41.028 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+18:19:41.028 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+18:19:41.028 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'webRequestLoggingFilter' to: [/*]
+18:19:41.028 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'applicationContextIdFilter' to: [/*]
+18:19:41.285 [main] INFO  o.a.c.s.boot.CamelAutoConfiguration - Using custom ShutdownStrategy: org.apache.camel.impl.DefaultShutdownStrategy@25b58578
+18:19:41.339 [main] INFO  o.a.c.c.x.AbstractCamelContextFactoryBean - Using custom ShutdownStrategy: org.apache.camel.impl.DefaultShutdownStrategy@25b58578
+18:19:41.702 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@56176879: startup date [Sun Jun 21 18:19:38 IST 2020]; root of context hierarchy
+18:19:41.767 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+18:19:41.768 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+18:19:41.801 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:19:41.801 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:19:41.841 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:19:41.929 [main] INFO  o.a.c.i.c.DefaultTypeConverter - Type converters loaded (core: 194, classpath: 21)
+18:19:42.914 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+18:19:42.921 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Registering beans for JMX exposure on startup
+18:19:42.926 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@13b7789a: startup date [Sun Jun 21 18:19:42 IST 2020]; parent: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@56176879
+18:19:42.958 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'handlerExceptionResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration; factoryMethodName=handlerExceptionResolver; initMethodName=null; destroyMethodName=(inferred); defined in org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=endpointWebMvcChildContextConfiguration; factoryMethodName=compositeHandlerExceptionResolver; initMethodName=null; destroyMethodName=(inferred); defined in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcChildContextConfiguration]
+18:19:43.008 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+18:19:43.008 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 82 ms
+18:19:43.011 [main] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+18:19:43.117 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+18:19:43.118 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env || /env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.119 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.121 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String)
+18:19:43.121 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>)
+18:19:43.121 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/loggers || /loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.122 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.123 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.125 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.125 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.126 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/health || /health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal)
+18:19:43.134 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/start],methods=[POST],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.start(java.lang.String)
+18:19:43.134 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/stop],methods=[POST],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.stop(java.lang.String,java.lang.Long,java.lang.Boolean)
+18:19:43.134 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/suspend],methods=[POST],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.suspend(java.lang.String,java.lang.Long)
+18:19:43.135 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/resume],methods=[POST],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.resume(java.lang.String)
+18:19:43.135 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/reset],methods=[POST],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.reset(java.lang.String)
+18:19:43.135 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.info(java.lang.String)
+18:19:43.135 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/detail],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.detail(java.lang.String)
+18:19:43.136 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes || /camel/routes.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.136 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+18:19:43.137 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.137 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/info || /info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.138 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/route-controller || /camel/route-controller.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.139 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+18:19:43.140 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/auditevents || /auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String)
+18:19:43.141 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/health/check/{id}/invoke],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelHealthCheckMvcEndpoint.invoke(java.lang.String,java.util.Map<java.lang.String, java.lang.Object>)
+18:19:43.142 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/health/check/{id}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelHealthCheckMvcEndpoint.query(java.lang.String,java.util.Map<java.lang.String, java.lang.Object>)
+18:19:43.142 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/health/check || /camel/health/check.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.142 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:19:43.158 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public java.util.Map<java.lang.String, java.lang.Object> org.springframework.boot.actuate.endpoint.mvc.ManagementErrorEndpoint.invoke()
+18:19:43.163 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:19:43.164 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:19:43.178 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@13b7789a: startup date [Sun Jun 21 18:19:42 IST 2020]; parent: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@56176879
+18:19:43.225 [main] INFO  o.a.c.spring.boot.RoutesCollector - Loading additional Camel XML routes from: classpath:camel/*.xml
+18:19:43.225 [main] INFO  o.a.c.spring.boot.RoutesCollector - Loading additional Camel XML rests from: classpath:camel-rest/*.xml
+18:19:43.240 [main] INFO  o.a.camel.spring.SpringCamelContext - Apache Camel 2.21.0.fuse-740039-redhat-00001 (CamelContext: MyCamel) is starting
+18:19:43.241 [main] INFO  o.a.c.m.ManagedManagementStrategy - JMX is enabled
+18:19:43.522 [main] DEBUG o.a.c.c.netty4.NettyConfiguration - Using object encoders and decoders
+18:19:43.525 [main] INFO  o.a.camel.spring.SpringCamelContext - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+18:19:43.531 [main] INFO  o.a.c.component.file.FileEndpoint - Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+18:19:43.532 [main] INFO  o.a.c.component.file.FileEndpoint - Using default memory based idempotent repository with cache max size: 1000
+18:19:43.982 [main] INFO  o.a.camel.spring.SpringCamelContext - Route: msg1 started and consuming from: file://src/data?noop=true
+18:19:44.153 [ActiveMQ Task-1] INFO  o.a.a.t.failover.FailoverTransport - Successfully connected to tcp://localhost:61616
+18:19:44.165 [main] INFO  o.a.camel.spring.SpringCamelContext - Route: netty2 started and consuming from: activemq://TestQueue
+18:19:44.166 [main] DEBUG o.a.c.component.netty4.NettyConsumer - Starting consumer: Consumer[tcp://localhost:8082]
+18:19:44.167 [main] DEBUG o.a.c.component.netty4.NettyConsumer - Netty consumer binding to: localhost:8082
+18:19:44.232 [main] DEBUG o.a.c.c.n.SingleTCPNettyServerBootstrapFactory - Created ServerBootstrap ServerBootstrap(ServerBootstrapConfig(group: NioEventLoopGroup, channelFactory: ReflectiveChannelFactory(NioServerSocketChannel.class), options: {SO_REUSEADDR=true}, childGroup: NioEventLoopGroup, childOptions: {SO_KEEPALIVE=true, TCP_NODELAY=true, SO_REUSEADDR=true, CONNECT_TIMEOUT_MILLIS=10000}, childHandler: org.apache.camel.component.netty4.DefaultServerInitializerFactory@2594a4cd))
+18:19:44.232 [main] INFO  o.a.c.c.n.SingleTCPNettyServerBootstrapFactory - ServerBootstrap binding to localhost:8082
+18:19:44.297 [main] INFO  o.a.c.component.netty4.NettyConsumer - Netty consumer bound to: localhost:8082
+18:19:44.297 [main] INFO  o.a.camel.spring.SpringCamelContext - Route: server started and consuming from: tcp://localhost:8082
+18:19:44.297 [main] INFO  o.a.camel.spring.SpringCamelContext - Total 3 routes, of which 3 are started
+18:19:44.298 [main] INFO  o.a.camel.spring.SpringCamelContext - Apache Camel 2.21.0.fuse-740039-redhat-00001 (CamelContext: MyCamel) started in 1.057 seconds
+18:19:44.308 [main] INFO  org.xnio - XNIO version 3.3.8.Final
+18:19:44.319 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.3.8.Final
+18:19:44.381 [main] INFO  o.s.b.c.e.u.UndertowEmbeddedServletContainer - Undertow started on port(s) 8081 (http)
+18:19:44.386 [main] INFO  o.s.c.s.DefaultLifecycleProcessor - Starting beans in phase 0
+18:19:44.388 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'auditEventsEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=auditEventsEndpoint]
+18:19:44.399 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'healthChecksEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=healthChecksEndpoint]
+18:19:44.408 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'routeControllerEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=routeControllerEndpoint]
+18:19:44.411 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'camelEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=camelEndpoint]
+18:19:44.414 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'requestMappingEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=requestMappingEndpoint]
+18:19:44.417 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'environmentEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=environmentEndpoint]
+18:19:44.419 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'healthEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=healthEndpoint]
+18:19:44.422 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'beansEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=beansEndpoint]
+18:19:44.425 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'infoEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=infoEndpoint]
+18:19:44.428 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'loggersEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=loggersEndpoint]
+18:19:44.432 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'metricsEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=metricsEndpoint]
+18:19:44.434 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'traceEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=traceEndpoint]
+18:19:44.437 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'dumpEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=dumpEndpoint]
+18:19:44.439 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'autoConfigurationReportEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=autoConfigurationReportEndpoint]
+18:19:44.441 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'configurationPropertiesReportEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=configurationPropertiesReportEndpoint]
+18:19:44.442 [main] INFO  o.s.c.s.DefaultLifecycleProcessor - Starting beans in phase 2147483647
+18:19:44.459 [main] INFO  o.s.b.c.e.u.UndertowEmbeddedServletContainer - Undertow started on port(s) 8080 (http)
+18:19:44.462 [main] INFO  org.example.Application - Started Application in 6.313 seconds (JVM running for 8.961)
+18:19:44.996 [Camel (MyCamel) thread #1 - file://src/data] INFO  msg1 - Got a message from file >> <Msg>
+	<Header>
+		<EAIMsgVerNo>1</EAIMsgVerNo>
+		<EAITransType>AG00005</EAITransType>
+		<EAIApplName>MOne</EAIApplName>
+	</Header>
+</Msg>	
+18:19:45.005 [ActiveMQ Task-1] INFO  o.a.a.t.failover.FailoverTransport - Successfully connected to tcp://localhost:61616
+18:19:45.062 [Camel (MyCamel) thread #2 - JmsConsumer[TestQueue]] DEBUG o.a.c.c.netty4.NettyConfiguration - Using object encoders and decoders
+18:19:45.066 [Camel (MyCamel) thread #2 - JmsConsumer[TestQueue]] DEBUG o.a.c.component.netty4.NettyProducer - Starting producer: Producer[tcp://localhost:8082]
+18:19:45.077 [Camel (MyCamel) thread #2 - JmsConsumer[TestQueue]] DEBUG o.a.c.component.netty4.NettyProducer - Created NettyProducer pool[maxActive=4, minIdle=0, maxIdle=100, minEvictableIdleTimeMillis=300000] -> org.apache.commons.pool.impl.GenericObjectPool@57ebe92e
+18:19:45.082 [Camel (MyCamel) thread #2 - JmsConsumer[TestQueue]] TRACE o.a.c.component.netty4.NettyProducer - Pool[active=0, idle=0]
+18:19:45.095 [Camel (MyCamel) thread #2 - JmsConsumer[TestQueue]] DEBUG o.a.c.component.netty4.NettyProducer - Created new TCP client bootstrap connecting to localhost:8082 with options: Bootstrap(BootstrapConfig(group: NioEventLoopGroup, channelFactory: ReflectiveChannelFactory(NioSocketChannel.class), options: {SO_KEEPALIVE=true, TCP_NODELAY=true, SO_REUSEADDR=true, CONNECT_TIMEOUT_MILLIS=10000}, handler: org.apache.camel.component.netty4.DefaultClientInitializerFactory@57b391c4, resolver: io.netty.resolver.DefaultAddressResolverGroup@1ddc9813))
+18:19:45.095 [Camel (MyCamel) thread #2 - JmsConsumer[TestQueue]] TRACE o.a.c.component.netty4.NettyProducer - Requested channel: AbstractBootstrap$PendingRegistrationPromise@539a18aa(incomplete)
+18:19:45.096 [Camel (MyCamel) thread #2 - JmsConsumer[TestQueue]] TRACE o.a.c.component.netty4.NettyProducer - activateObject channel request: AbstractBootstrap$PendingRegistrationPromise@539a18aa(incomplete) -> {}
+18:19:45.096 [Camel (MyCamel) thread #2 - JmsConsumer[TestQueue]] TRACE o.a.c.component.netty4.NettyProducer - Validating connecting channel request: AbstractBootstrap$PendingRegistrationPromise@539a18aa(incomplete) -> true
+18:19:45.096 [Camel (MyCamel) thread #2 - JmsConsumer[TestQueue]] TRACE o.a.c.component.netty4.NettyProducer - Got channel request from pool AbstractBootstrap$PendingRegistrationPromise@539a18aa(incomplete)
+18:19:45.099 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.c.n.DefaultClientInitializerFactory - Using request timeout 30000 millis
+18:19:45.103 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.c.n.DefaultClientInitializerFactory - Created ChannelPipeline: DefaultChannelPipeline{(DefaultClientInitializerFactory#0 = org.apache.camel.component.netty4.DefaultClientInitializerFactory), (decoder-0 = org.apache.camel.component.netty4.codec.ObjectDecoder), (encoder-0 = org.apache.camel.component.netty4.codec.ObjectEncoder), (timeout = io.netty.handler.timeout.ReadTimeoutHandler), (handler = org.apache.camel.component.netty4.handlers.ClientChannelHandler)}
+18:19:45.109 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Channel open finished with AbstractBootstrap$PendingRegistrationPromise@539a18aa(success)
+18:19:45.109 [Camel Thread #5 - NettyClientTCPWorker] DEBUG o.a.c.component.netty4.NettyProducer - Creating connector to address: localhost:8082
+18:19:45.113 [Camel Thread #6 - NettyServerTCPWorker] TRACE o.a.c.c.n.DefaultServerInitializerFactory - Created ChannelPipeline: DefaultChannelPipeline{(DefaultServerInitializerFactory#0 = org.apache.camel.component.netty4.DefaultServerInitializerFactory), (encoder-0 = org.apache.camel.component.netty4.codec.ObjectEncoder), (decoder-0 = org.apache.camel.component.netty4.codec.ObjectDecoder), (handler = org.apache.camel.component.netty4.handlers.ServerChannelHandler)}
+18:19:45.114 [Camel (MyCamel) thread #7 - NettyEventExecutorGroup] TRACE o.a.c.component.netty4.NettyConsumer - Channel open: [id: 0x80eab584, L:/127.0.0.1:8082 - R:/127.0.0.1:42558]
+18:19:45.111 [Camel Thread #5 - NettyClientTCPWorker] DEBUG o.a.c.component.netty4.NettyProducer - Channel: [id: 0xd15e1b48, L:/127.0.0.1:42558 - R:localhost/127.0.0.1:8082] writing body: [60, 77, 115, 103, 62, 10, 9, 60, 72, 101, 97, 100, 101, 114, 62, 10, 9, 9, 60, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 49, 60, 47, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 10, 9, 9, 60, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 65, 71, 48, 48, 48, 48, 53, 60, 47, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 10, 9, 9, 60, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 77, 79, 110, 101, 60, 47, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 10, 9, 60, 47, 72, 101, 97, 100, 101, 114, 62, 10, 60, 47, 77, 115, 103, 62, 9]
+18:19:45.144 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Operation complete DefaultChannelPromise@50b1c18c(success)
+18:19:45.144 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Channel open: [id: 0xd15e1b48, L:/127.0.0.1:42558 - R:localhost/127.0.0.1:8082]
+18:19:45.152 [Camel (MyCamel) thread #7 - NettyEventExecutorGroup] DEBUG o.a.c.component.netty4.NettyConsumer - Channel: [id: 0x80eab584, L:/127.0.0.1:8082 - R:/127.0.0.1:42558] received body: [60, 77, 115, 103, 62, 10, 9, 60, 72, 101, 97, 100, 101, 114, 62, 10, 9, 9, 60, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 49, 60, 47, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 10, 9, 9, 60, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 65, 71, 48, 48, 48, 48, 53, 60, 47, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 10, 9, 9, 60, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 77, 79, 110, 101, 60, 47, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 10, 9, 60, 47, 72, 101, 97, 100, 101, 114, 62, 10, 60, 47, 77, 115, 103, 62, 9]
+18:19:45.154 [Camel (MyCamel) thread #7 - NettyEventExecutorGroup] INFO  server - Got a messag nettyservere >> <Msg>
+	<Header>
+		<EAIMsgVerNo>1</EAIMsgVerNo>
+		<EAITransType>AG00005</EAITransType>
+		<EAIApplName>MOne</EAIApplName>
+	</Header>
+</Msg>	
+18:19:45.154 [Camel (MyCamel) thread #7 - NettyEventExecutorGroup] DEBUG o.a.c.component.netty4.NettyConsumer - Channel: [id: 0x80eab584, L:/127.0.0.1:8082 - R:/127.0.0.1:42558] writing body: [60, 77, 115, 103, 62, 10, 9, 60, 72, 101, 97, 100, 101, 114, 62, 10, 9, 9, 60, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 49, 60, 47, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 10, 9, 9, 60, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 65, 71, 48, 48, 48, 48, 53, 60, 47, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 10, 9, 9, 60, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 77, 79, 110, 101, 60, 47, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 10, 9, 60, 47, 72, 101, 97, 100, 101, 114, 62, 10, 60, 47, 77, 115, 103, 62, 9]
+18:19:45.156 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Message received: [60, 77, 115, 103, 62, 10, 9, 60, 72, 101, 97, 100, 101, 114, 62, 10, 9, 9, 60, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 49, 60, 47, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 10, 9, 9, 60, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 65, 71, 48, 48, 48, 48, 53, 60, 47, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 10, 9, 9, 60, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 77, 79, 110, 101, 60, 47, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 10, 9, 60, 47, 72, 101, 97, 100, 101, 114, 62, 10, 60, 47, 77, 115, 103, 62, 9]
+18:19:45.156 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Removing timeout channel as we received message
+18:19:45.156 [Camel Thread #5 - NettyClientTCPWorker] DEBUG o.a.c.component.netty4.NettyProducer - Channel: [id: 0xd15e1b48, L:/127.0.0.1:42558 - R:localhost/127.0.0.1:8082] received body: [60, 77, 115, 103, 62, 10, 9, 60, 72, 101, 97, 100, 101, 114, 62, 10, 9, 9, 60, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 49, 60, 47, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 10, 9, 9, 60, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 65, 71, 48, 48, 48, 48, 53, 60, 47, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 10, 9, 9, 60, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 77, 79, 110, 101, 60, 47, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 10, 9, 60, 47, 72, 101, 97, 100, 101, 114, 62, 10, 60, 47, 77, 115, 103, 62, 9]
+18:19:45.157 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Closing channel when complete at address: localhost:8082
+18:19:45.159 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyHelper - Channel closed: [id: 0xd15e1b48, L:/127.0.0.1:42558 ! R:localhost/127.0.0.1:8082]
+18:19:45.159 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Invalidating channel from pool [id: 0xd15e1b48, L:/127.0.0.1:42558 ! R:localhost/127.0.0.1:8082]
+18:19:45.159 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Destroying channel request: AbstractBootstrap$PendingRegistrationPromise@539a18aa(success)
+18:19:45.167 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Channel closed: [id: 0xd15e1b48, L:/127.0.0.1:42558 ! R:localhost/127.0.0.1:8082]
+18:19:45.167 [Camel (MyCamel) thread #7 - NettyEventExecutorGroup] TRACE o.a.c.component.netty4.NettyConsumer - Channel closed: [id: 0x80eab584, L:/127.0.0.1:8082 ! R:/127.0.0.1:42558]
+18:22:47.803 [Thread-5] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@56176879: startup date [Sun Jun 21 18:19:38 IST 2020]; root of context hierarchy
+18:22:47.804 [Thread-5] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@13b7789a: startup date [Sun Jun 21 18:19:42 IST 2020]; parent: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@56176879
+18:22:47.810 [Thread-5] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483647
+18:22:47.810 [Thread-5] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483646
+18:22:47.811 [Thread-5] INFO  o.a.camel.spring.SpringCamelContext - Apache Camel 2.21.0.fuse-740039-redhat-00001 (CamelContext: MyCamel) is shutting down
+18:22:47.811 [Thread-5] INFO  o.a.c.impl.DefaultShutdownStrategy - Starting to graceful shutdown 3 routes (timeout 2 seconds)
+18:22:47.814 [Camel (MyCamel) thread #8 - ShutdownTask] DEBUG o.a.c.component.netty4.NettyConsumer - Netty consumer unbinding from: localhost:8082
+18:22:47.814 [Camel (MyCamel) thread #8 - ShutdownTask] INFO  o.a.c.c.n.SingleTCPNettyServerBootstrapFactory - ServerBootstrap unbinding from localhost:8082
+18:22:47.814 [Camel (MyCamel) thread #8 - ShutdownTask] TRACE o.a.c.c.n.SingleTCPNettyServerBootstrapFactory - Closing 1 channels
+18:22:47.821 [Camel (MyCamel) thread #8 - ShutdownTask] INFO  o.a.c.component.netty4.NettyConsumer - Netty consumer unbound from: localhost:8082
+18:22:47.822 [Camel (MyCamel) thread #8 - ShutdownTask] DEBUG o.a.c.component.netty4.NettyConsumer - Stopping consumer: Consumer[tcp://localhost:8082]
+18:22:47.822 [Camel (MyCamel) thread #8 - ShutdownTask] INFO  o.a.c.impl.DefaultShutdownStrategy - Route: server shutdown complete, was consuming from: tcp://localhost:8082
+18:22:48.248 [Camel (MyCamel) thread #8 - ShutdownTask] DEBUG o.a.c.component.netty4.NettyProducer - Stopping producer at address: localhost:8082
+18:22:48.248 [Camel (MyCamel) thread #8 - ShutdownTask] TRACE o.a.c.component.netty4.NettyProducer - Closing 0 channels
+18:22:48.253 [Camel (MyCamel) thread #8 - ShutdownTask] DEBUG o.a.c.component.netty4.NettyProducer - Stopping producer with channel pool[active=0, idle=0]
+18:22:48.254 [Camel (MyCamel) thread #8 - ShutdownTask] DEBUG o.a.c.component.netty4.NettyProducer - Stopping producer: Producer[tcp://localhost:8082]
+18:22:48.257 [Camel (MyCamel) thread #8 - ShutdownTask] INFO  o.a.c.impl.DefaultShutdownStrategy - Route: netty2 shutdown complete, was consuming from: activemq://TestQueue
+18:22:48.259 [Camel (MyCamel) thread #8 - ShutdownTask] INFO  o.a.c.impl.DefaultShutdownStrategy - Route: msg1 shutdown complete, was consuming from: file://src/data?noop=true
+18:22:48.259 [Thread-5] INFO  o.a.c.impl.DefaultShutdownStrategy - Graceful shutdown of 3 routes completed in 0 seconds
+18:22:48.283 [Thread-5] INFO  o.a.camel.spring.SpringCamelContext - Apache Camel 2.21.0.fuse-740039-redhat-00001 (CamelContext: MyCamel) uptime 3 minutes
+18:22:48.284 [Thread-5] INFO  o.a.camel.spring.SpringCamelContext - Apache Camel 2.21.0.fuse-740039-redhat-00001 (CamelContext: MyCamel) is shutdown in 0.473 seconds
+18:22:48.284 [Thread-5] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 0
+18:22:48.285 [Thread-5] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Unregistering JMX-exposed beans on shutdown
+18:22:48.285 [Thread-5] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Unregistering JMX-exposed beans
+18:22:48.285 [Thread-5] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< org.example:camel-netty4-reproducer >-----------------
+[INFO] Building Fabric8 :: Quickstarts :: Spring-Boot :: Camel 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot-maven-plugin:7.4.0.fuse-740036-redhat-00002:run (default-cli) > test-compile @ camel-netty4-reproducer >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ camel-netty4-reproducer ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ camel-netty4-reproducer ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ camel-netty4-reproducer ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/kkakarla/development/camel-fuse-examples/camel-netty4-timeout-issue-sb/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ camel-netty4-reproducer ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot-maven-plugin:7.4.0.fuse-740036-redhat-00002:run (default-cli) < test-compile @ camel-netty4-reproducer <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:7.4.0.fuse-740036-redhat-00002:run (default-cli) @ camel-netty4-reproducer ---
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::       (v1.5.17.RELEASE)
+
+18:22:55.979 [main] INFO  org.example.Application - Starting Application on kkakarla.pnq.csb with PID 16981 (/home/kkakarla/development/camel-fuse-examples/camel-netty4-timeout-issue-sb/target/classes started by kkakarla in /home/kkakarla/development/camel-fuse-examples/camel-netty4-timeout-issue-sb)
+18:22:55.982 [main] INFO  org.example.Application - No active profile set, falling back to default profiles: default
+18:22:56.037 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@508e018d: startup date [Sun Jun 21 18:22:56 IST 2020]; root of context hierarchy
+18:22:56.099 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.5.Final-redhat-2
+18:22:56.375 [main] TRACE o.a.c.c.n.s.NettyComponentAutoConfiguration$GroupConditions - Condition NettyComponentAutoConfiguration.GroupConditions on org.apache.camel.component.netty4.springboot.NettyComponentAutoConfiguration matched due to camel.component.netty4 enabled
+18:22:56.560 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [spring/camel-context.xml]
+18:22:57.658 [main] TRACE o.a.c.c.n.s.NettyComponentAutoConfiguration$GroupConditions - Condition NettyComponentAutoConfiguration.GroupConditions on org.apache.camel.component.netty4.springboot.NettyComponentAutoConfiguration matched due to camel.component.netty4 enabled
+18:22:58.394 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.apache.camel.spring.boot.CamelAutoConfiguration' of type [org.apache.camel.spring.boot.CamelAutoConfiguration$$EnhancerBySpringCGLIB$$2781484e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+18:22:58.669 [main] WARN  io.undertow.websockets.jsr - UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+18:22:58.690 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+18:22:58.691 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2659 ms
+18:22:58.893 [main] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+18:22:58.898 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'metricsFilter' to: [/*]
+18:22:58.899 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+18:22:58.899 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+18:22:58.899 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+18:22:58.899 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+18:22:58.899 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'webRequestLoggingFilter' to: [/*]
+18:22:58.899 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'applicationContextIdFilter' to: [/*]
+18:22:59.156 [main] INFO  o.a.c.s.boot.CamelAutoConfiguration - Using custom ShutdownStrategy: org.apache.camel.impl.DefaultShutdownStrategy@3a4b4ea8
+18:22:59.217 [main] INFO  o.a.c.c.x.AbstractCamelContextFactoryBean - Using custom ShutdownStrategy: org.apache.camel.impl.DefaultShutdownStrategy@3a4b4ea8
+18:22:59.646 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@508e018d: startup date [Sun Jun 21 18:22:56 IST 2020]; root of context hierarchy
+18:22:59.735 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+18:22:59.737 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+18:22:59.774 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:22:59.774 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:22:59.820 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:22:59.916 [main] INFO  o.a.c.i.c.DefaultTypeConverter - Type converters loaded (core: 194, classpath: 21)
+18:23:00.921 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+18:23:00.929 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Registering beans for JMX exposure on startup
+18:23:00.933 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4305b8e7: startup date [Sun Jun 21 18:23:00 IST 2020]; parent: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@508e018d
+18:23:00.969 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'handlerExceptionResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration; factoryMethodName=handlerExceptionResolver; initMethodName=null; destroyMethodName=(inferred); defined in org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=endpointWebMvcChildContextConfiguration; factoryMethodName=compositeHandlerExceptionResolver; initMethodName=null; destroyMethodName=(inferred); defined in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcChildContextConfiguration]
+18:23:01.014 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+18:23:01.014 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 81 ms
+18:23:01.016 [main] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+18:23:01.089 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.089 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.090 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.092 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+18:23:01.092 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env || /env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.093 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/health || /health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal)
+18:23:01.098 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/health/check/{id}/invoke],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelHealthCheckMvcEndpoint.invoke(java.lang.String,java.util.Map<java.lang.String, java.lang.Object>)
+18:23:01.098 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/health/check/{id}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelHealthCheckMvcEndpoint.query(java.lang.String,java.util.Map<java.lang.String, java.lang.Object>)
+18:23:01.098 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/health/check || /camel/health/check.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.102 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/start],methods=[POST],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.start(java.lang.String)
+18:23:01.102 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/stop],methods=[POST],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.stop(java.lang.String,java.lang.Long,java.lang.Boolean)
+18:23:01.103 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/suspend],methods=[POST],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.suspend(java.lang.String,java.lang.Long)
+18:23:01.103 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/resume],methods=[POST],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.resume(java.lang.String)
+18:23:01.103 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/reset],methods=[POST],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.reset(java.lang.String)
+18:23:01.103 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.info(java.lang.String)
+18:23:01.104 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes/{id}/detail],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.apache.camel.spring.boot.actuate.endpoint.CamelRoutesMvcEndpoint.detail(java.lang.String)
+18:23:01.104 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/routes || /camel/routes.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.105 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.105 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.106 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+18:23:01.106 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+18:23:01.107 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.107 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/auditevents || /auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String)
+18:23:01.108 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/info || /info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.109 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.109 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/camel/route-controller || /camel/route-controller.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.111 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String)
+18:23:01.111 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>)
+18:23:01.111 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/loggers || /loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+18:23:01.125 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public java.util.Map<java.lang.String, java.lang.Object> org.springframework.boot.actuate.endpoint.mvc.ManagementErrorEndpoint.invoke()
+18:23:01.132 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:23:01.132 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+18:23:01.149 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4305b8e7: startup date [Sun Jun 21 18:23:00 IST 2020]; parent: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@508e018d
+18:23:01.194 [main] INFO  o.a.c.spring.boot.RoutesCollector - Loading additional Camel XML routes from: classpath:camel/*.xml
+18:23:01.194 [main] INFO  o.a.c.spring.boot.RoutesCollector - Loading additional Camel XML rests from: classpath:camel-rest/*.xml
+18:23:01.207 [main] INFO  o.a.camel.spring.SpringCamelContext - Apache Camel 2.21.0.fuse-740039-redhat-00001 (CamelContext: MyCamel) is starting
+18:23:01.208 [main] INFO  o.a.c.m.ManagedManagementStrategy - JMX is enabled
+18:23:01.507 [main] DEBUG o.a.c.c.netty4.NettyConfiguration - Using object encoders and decoders
+18:23:01.511 [main] INFO  o.a.camel.spring.SpringCamelContext - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+18:23:01.516 [main] INFO  o.a.c.component.file.FileEndpoint - Endpoint is configured with noop=true so forcing endpoint to be idempotent as well
+18:23:01.517 [main] INFO  o.a.c.component.file.FileEndpoint - Using default memory based idempotent repository with cache max size: 1000
+18:23:02.057 [main] INFO  o.a.camel.spring.SpringCamelContext - Route: msg1 started and consuming from: file://src/data?noop=true
+18:23:02.247 [ActiveMQ Task-1] INFO  o.a.a.t.failover.FailoverTransport - Successfully connected to tcp://localhost:61616
+18:23:02.262 [main] INFO  o.a.camel.spring.SpringCamelContext - Route: netty2 started and consuming from: activemq://TestQueue
+18:23:02.264 [main] DEBUG o.a.c.component.netty4.NettyConsumer - Starting consumer: Consumer[tcp://localhost:8082]
+18:23:02.264 [main] DEBUG o.a.c.component.netty4.NettyConsumer - Netty consumer binding to: localhost:8082
+18:23:02.342 [main] DEBUG o.a.c.c.n.SingleTCPNettyServerBootstrapFactory - Created ServerBootstrap ServerBootstrap(ServerBootstrapConfig(group: NioEventLoopGroup, channelFactory: ReflectiveChannelFactory(NioServerSocketChannel.class), options: {SO_REUSEADDR=true}, childGroup: NioEventLoopGroup, childOptions: {SO_KEEPALIVE=true, TCP_NODELAY=true, SO_REUSEADDR=true, CONNECT_TIMEOUT_MILLIS=10000}, childHandler: org.apache.camel.component.netty4.DefaultServerInitializerFactory@49d2c475))
+18:23:02.343 [main] INFO  o.a.c.c.n.SingleTCPNettyServerBootstrapFactory - ServerBootstrap binding to localhost:8082
+18:23:02.415 [main] INFO  o.a.c.component.netty4.NettyConsumer - Netty consumer bound to: localhost:8082
+18:23:02.415 [main] INFO  o.a.camel.spring.SpringCamelContext - Route: server started and consuming from: tcp://localhost:8082
+18:23:02.415 [main] INFO  o.a.camel.spring.SpringCamelContext - Total 3 routes, of which 3 are started
+18:23:02.416 [main] INFO  o.a.camel.spring.SpringCamelContext - Apache Camel 2.21.0.fuse-740039-redhat-00001 (CamelContext: MyCamel) started in 1.208 seconds
+18:23:02.430 [main] INFO  org.xnio - XNIO version 3.3.8.Final
+18:23:02.446 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.3.8.Final
+18:23:02.511 [main] INFO  o.s.b.c.e.u.UndertowEmbeddedServletContainer - Undertow started on port(s) 8081 (http)
+18:23:02.516 [main] INFO  o.s.c.s.DefaultLifecycleProcessor - Starting beans in phase 0
+18:23:02.519 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'auditEventsEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=auditEventsEndpoint]
+18:23:02.535 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'healthChecksEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=healthChecksEndpoint]
+18:23:02.547 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'routeControllerEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=routeControllerEndpoint]
+18:23:02.551 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'camelEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=camelEndpoint]
+18:23:02.555 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'requestMappingEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=requestMappingEndpoint]
+18:23:02.559 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'environmentEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=environmentEndpoint]
+18:23:02.563 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'healthEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=healthEndpoint]
+18:23:02.567 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'beansEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=beansEndpoint]
+18:23:02.570 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'infoEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=infoEndpoint]
+18:23:02.573 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'loggersEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=loggersEndpoint]
+18:23:02.580 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'metricsEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=metricsEndpoint]
+18:23:02.583 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'traceEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=traceEndpoint]
+18:23:02.586 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'dumpEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=dumpEndpoint]
+18:23:02.589 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'autoConfigurationReportEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=autoConfigurationReportEndpoint]
+18:23:02.592 [main] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Located managed bean 'configurationPropertiesReportEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=configurationPropertiesReportEndpoint]
+18:23:02.594 [main] INFO  o.s.c.s.DefaultLifecycleProcessor - Starting beans in phase 2147483647
+18:23:02.615 [main] INFO  o.s.b.c.e.u.UndertowEmbeddedServletContainer - Undertow started on port(s) 8080 (http)
+18:23:02.619 [main] INFO  org.example.Application - Started Application in 6.852 seconds (JVM running for 9.663)
+18:23:03.074 [Camel (MyCamel) thread #1 - file://src/data] INFO  msg1 - Got a message from file >> <Msg>
+	<Header>
+		<EAIMsgVerNo>1</EAIMsgVerNo>
+		<EAITransType>AG00005</EAITransType>
+		<EAIApplName>MOne</EAIApplName>
+	</Header>
+</Msg>	
+18:23:03.084 [ActiveMQ Task-1] INFO  o.a.a.t.failover.FailoverTransport - Successfully connected to tcp://localhost:61616
+18:23:03.135 [Camel (MyCamel) thread #3 - JmsConsumer[TestQueue]] DEBUG o.a.c.c.netty4.NettyConfiguration - Using object encoders and decoders
+18:23:03.139 [Camel (MyCamel) thread #3 - JmsConsumer[TestQueue]] DEBUG o.a.c.component.netty4.NettyProducer - Starting producer: Producer[tcp://localhost:8082]
+18:23:03.147 [Camel (MyCamel) thread #3 - JmsConsumer[TestQueue]] DEBUG o.a.c.component.netty4.NettyProducer - Created NettyProducer pool[maxActive=4, minIdle=0, maxIdle=100, minEvictableIdleTimeMillis=300000] -> org.apache.commons.pool.impl.GenericObjectPool@368ea064
+18:23:03.152 [Camel (MyCamel) thread #3 - JmsConsumer[TestQueue]] TRACE o.a.c.component.netty4.NettyProducer - Pool[active=0, idle=0]
+18:23:03.163 [Camel (MyCamel) thread #3 - JmsConsumer[TestQueue]] DEBUG o.a.c.component.netty4.NettyProducer - Created new TCP client bootstrap connecting to localhost:8082 with options: Bootstrap(BootstrapConfig(group: NioEventLoopGroup, channelFactory: ReflectiveChannelFactory(NioSocketChannel.class), options: {SO_KEEPALIVE=true, TCP_NODELAY=true, SO_REUSEADDR=true, CONNECT_TIMEOUT_MILLIS=10000}, handler: org.apache.camel.component.netty4.DefaultClientInitializerFactory@de50417, resolver: io.netty.resolver.DefaultAddressResolverGroup@30e7a023))
+18:23:03.163 [Camel (MyCamel) thread #3 - JmsConsumer[TestQueue]] TRACE o.a.c.component.netty4.NettyProducer - Requested channel: AbstractBootstrap$PendingRegistrationPromise@a252997(incomplete)
+18:23:03.164 [Camel (MyCamel) thread #3 - JmsConsumer[TestQueue]] TRACE o.a.c.component.netty4.NettyProducer - activateObject channel request: AbstractBootstrap$PendingRegistrationPromise@a252997(incomplete) -> {}
+18:23:03.164 [Camel (MyCamel) thread #3 - JmsConsumer[TestQueue]] TRACE o.a.c.component.netty4.NettyProducer - Validating connecting channel request: AbstractBootstrap$PendingRegistrationPromise@a252997(incomplete) -> true
+18:23:03.164 [Camel (MyCamel) thread #3 - JmsConsumer[TestQueue]] TRACE o.a.c.component.netty4.NettyProducer - Got channel request from pool AbstractBootstrap$PendingRegistrationPromise@a252997(incomplete)
+18:23:03.168 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.c.n.DefaultClientInitializerFactory - Using request timeout 30000 millis
+18:23:03.172 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.c.n.DefaultClientInitializerFactory - Created ChannelPipeline: DefaultChannelPipeline{(DefaultClientInitializerFactory#0 = org.apache.camel.component.netty4.DefaultClientInitializerFactory), (decoder-0 = org.apache.camel.component.netty4.codec.ObjectDecoder), (encoder-0 = org.apache.camel.component.netty4.codec.ObjectEncoder), (timeout = io.netty.handler.timeout.ReadTimeoutHandler), (handler = org.apache.camel.component.netty4.handlers.ClientChannelHandler)}
+18:23:03.177 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Channel open finished with AbstractBootstrap$PendingRegistrationPromise@a252997(success)
+18:23:03.177 [Camel Thread #5 - NettyClientTCPWorker] DEBUG o.a.c.component.netty4.NettyProducer - Creating connector to address: localhost:8082
+18:23:03.182 [Camel Thread #6 - NettyServerTCPWorker] TRACE o.a.c.c.n.DefaultServerInitializerFactory - Created ChannelPipeline: DefaultChannelPipeline{(DefaultServerInitializerFactory#0 = org.apache.camel.component.netty4.DefaultServerInitializerFactory), (encoder-0 = org.apache.camel.component.netty4.codec.ObjectEncoder), (decoder-0 = org.apache.camel.component.netty4.codec.ObjectDecoder), (handler = org.apache.camel.component.netty4.handlers.ServerChannelHandler)}
+18:23:03.183 [Camel (MyCamel) thread #7 - NettyEventExecutorGroup] TRACE o.a.c.component.netty4.NettyConsumer - Channel open: [id: 0x31a1601b, L:/127.0.0.1:8082 - R:/127.0.0.1:42568]
+18:23:03.179 [Camel Thread #5 - NettyClientTCPWorker] DEBUG o.a.c.component.netty4.NettyProducer - Channel: [id: 0xa7b2f802, L:/127.0.0.1:42568 - R:localhost/127.0.0.1:8082] writing body: [60, 77, 115, 103, 62, 10, 9, 60, 72, 101, 97, 100, 101, 114, 62, 10, 9, 9, 60, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 49, 60, 47, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 10, 9, 9, 60, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 65, 71, 48, 48, 48, 48, 53, 60, 47, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 10, 9, 9, 60, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 77, 79, 110, 101, 60, 47, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 10, 9, 60, 47, 72, 101, 97, 100, 101, 114, 62, 10, 60, 47, 77, 115, 103, 62, 9]
+18:23:03.212 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Operation complete DefaultChannelPromise@1b130871(success)
+18:23:03.213 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Channel open: [id: 0xa7b2f802, L:/127.0.0.1:42568 - R:localhost/127.0.0.1:8082]
+18:23:03.220 [Camel (MyCamel) thread #7 - NettyEventExecutorGroup] DEBUG o.a.c.component.netty4.NettyConsumer - Channel: [id: 0x31a1601b, L:/127.0.0.1:8082 - R:/127.0.0.1:42568] received body: [60, 77, 115, 103, 62, 10, 9, 60, 72, 101, 97, 100, 101, 114, 62, 10, 9, 9, 60, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 49, 60, 47, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 10, 9, 9, 60, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 65, 71, 48, 48, 48, 48, 53, 60, 47, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 10, 9, 9, 60, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 77, 79, 110, 101, 60, 47, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 10, 9, 60, 47, 72, 101, 97, 100, 101, 114, 62, 10, 60, 47, 77, 115, 103, 62, 9]
+18:23:03.222 [Camel (MyCamel) thread #7 - NettyEventExecutorGroup] INFO  server - Got a messag nettyservere >> <Msg>
+	<Header>
+		<EAIMsgVerNo>1</EAIMsgVerNo>
+		<EAITransType>AG00005</EAITransType>
+		<EAIApplName>MOne</EAIApplName>
+	</Header>
+</Msg>	
+18:23:03.223 [Camel (MyCamel) thread #7 - NettyEventExecutorGroup] DEBUG o.a.c.component.netty4.NettyConsumer - Channel: [id: 0x31a1601b, L:/127.0.0.1:8082 - R:/127.0.0.1:42568] writing body: [60, 77, 115, 103, 62, 10, 9, 60, 72, 101, 97, 100, 101, 114, 62, 10, 9, 9, 60, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 49, 60, 47, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 10, 9, 9, 60, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 65, 71, 48, 48, 48, 48, 53, 60, 47, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 10, 9, 9, 60, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 77, 79, 110, 101, 60, 47, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 10, 9, 60, 47, 72, 101, 97, 100, 101, 114, 62, 10, 60, 47, 77, 115, 103, 62, 9]
+18:23:03.226 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Message received: [60, 77, 115, 103, 62, 10, 9, 60, 72, 101, 97, 100, 101, 114, 62, 10, 9, 9, 60, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 49, 60, 47, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 10, 9, 9, 60, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 65, 71, 48, 48, 48, 48, 53, 60, 47, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 10, 9, 9, 60, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 77, 79, 110, 101, 60, 47, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 10, 9, 60, 47, 72, 101, 97, 100, 101, 114, 62, 10, 60, 47, 77, 115, 103, 62, 9]
+18:23:03.226 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Removing timeout channel as we received message
+18:23:03.226 [Camel Thread #5 - NettyClientTCPWorker] DEBUG o.a.c.component.netty4.NettyProducer - Channel: [id: 0xa7b2f802, L:/127.0.0.1:42568 - R:localhost/127.0.0.1:8082] received body: [60, 77, 115, 103, 62, 10, 9, 60, 72, 101, 97, 100, 101, 114, 62, 10, 9, 9, 60, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 49, 60, 47, 69, 65, 73, 77, 115, 103, 86, 101, 114, 78, 111, 62, 10, 9, 9, 60, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 65, 71, 48, 48, 48, 48, 53, 60, 47, 69, 65, 73, 84, 114, 97, 110, 115, 84, 121, 112, 101, 62, 10, 9, 9, 60, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 77, 79, 110, 101, 60, 47, 69, 65, 73, 65, 112, 112, 108, 78, 97, 109, 101, 62, 10, 9, 60, 47, 72, 101, 97, 100, 101, 114, 62, 10, 60, 47, 77, 115, 103, 62, 9]
+18:23:03.226 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Closing channel when complete at address: localhost:8082
+18:23:03.229 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyHelper - Channel closed: [id: 0xa7b2f802, L:/127.0.0.1:42568 ! R:localhost/127.0.0.1:8082]
+18:23:03.229 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Invalidating channel from pool [id: 0xa7b2f802, L:/127.0.0.1:42568 ! R:localhost/127.0.0.1:8082]
+18:23:03.229 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Destroying channel request: AbstractBootstrap$PendingRegistrationPromise@a252997(success)
+18:23:03.231 [Camel Thread #5 - NettyClientTCPWorker] INFO  netty2 - Got a message from  recipientList>> <Msg>
+	<Header>
+		<EAIMsgVerNo>1</EAIMsgVerNo>
+		<EAITransType>AG00005</EAITransType>
+		<EAIApplName>MOne</EAIApplName>
+	</Header>
+</Msg>	
+18:23:03.236 [Camel Thread #5 - NettyClientTCPWorker] TRACE o.a.c.component.netty4.NettyProducer - Channel closed: [id: 0xa7b2f802, L:/127.0.0.1:42568 ! R:localhost/127.0.0.1:8082]
+18:23:03.236 [Camel (MyCamel) thread #7 - NettyEventExecutorGroup] TRACE o.a.c.component.netty4.NettyConsumer - Channel closed: [id: 0x31a1601b, L:/127.0.0.1:8082 ! R:/127.0.0.1:42568]
+18:24:33.711 [Thread-5] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@508e018d: startup date [Sun Jun 21 18:22:56 IST 2020]; root of context hierarchy
+18:24:33.712 [Thread-5] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4305b8e7: startup date [Sun Jun 21 18:23:00 IST 2020]; parent: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@508e018d
+18:24:33.721 [Thread-5] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483647
+18:24:33.722 [Thread-5] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483646
+18:24:33.722 [Thread-5] INFO  o.a.camel.spring.SpringCamelContext - Apache Camel 2.21.0.fuse-740039-redhat-00001 (CamelContext: MyCamel) is shutting down
+18:24:33.722 [Thread-5] INFO  o.a.c.impl.DefaultShutdownStrategy - Starting to graceful shutdown 3 routes (timeout 2 seconds)
+18:24:33.724 [Camel (MyCamel) thread #8 - ShutdownTask] DEBUG o.a.c.component.netty4.NettyConsumer - Netty consumer unbinding from: localhost:8082
+18:24:33.724 [Camel (MyCamel) thread #8 - ShutdownTask] INFO  o.a.c.c.n.SingleTCPNettyServerBootstrapFactory - ServerBootstrap unbinding from localhost:8082
+18:24:33.725 [Camel (MyCamel) thread #8 - ShutdownTask] TRACE o.a.c.c.n.SingleTCPNettyServerBootstrapFactory - Closing 1 channels
+18:24:33.732 [Camel (MyCamel) thread #8 - ShutdownTask] INFO  o.a.c.component.netty4.NettyConsumer - Netty consumer unbound from: localhost:8082
+18:24:33.733 [Camel (MyCamel) thread #8 - ShutdownTask] DEBUG o.a.c.component.netty4.NettyConsumer - Stopping consumer: Consumer[tcp://localhost:8082]
+18:24:33.733 [Camel (MyCamel) thread #8 - ShutdownTask] INFO  o.a.c.impl.DefaultShutdownStrategy - Route: server shutdown complete, was consuming from: tcp://localhost:8082
+18:24:34.324 [Camel (MyCamel) thread #8 - ShutdownTask] DEBUG o.a.c.component.netty4.NettyProducer - Stopping producer at address: localhost:8082
+18:24:34.324 [Camel (MyCamel) thread #8 - ShutdownTask] TRACE o.a.c.component.netty4.NettyProducer - Closing 0 channels
+18:24:34.328 [Camel (MyCamel) thread #8 - ShutdownTask] DEBUG o.a.c.component.netty4.NettyProducer - Stopping producer with channel pool[active=0, idle=0]
+18:24:34.329 [Camel (MyCamel) thread #8 - ShutdownTask] DEBUG o.a.c.component.netty4.NettyProducer - Stopping producer: Producer[tcp://localhost:8082]
+18:24:34.332 [Camel (MyCamel) thread #8 - ShutdownTask] INFO  o.a.c.impl.DefaultShutdownStrategy - Route: netty2 shutdown complete, was consuming from: activemq://TestQueue
+18:24:34.332 [Camel (MyCamel) thread #8 - ShutdownTask] INFO  o.a.c.impl.DefaultShutdownStrategy - Route: msg1 shutdown complete, was consuming from: file://src/data?noop=true
+18:24:34.333 [Thread-5] INFO  o.a.c.impl.DefaultShutdownStrategy - Graceful shutdown of 3 routes completed in 0 seconds
+18:24:34.355 [Thread-5] INFO  o.a.camel.spring.SpringCamelContext - Apache Camel 2.21.0.fuse-740039-redhat-00001 (CamelContext: MyCamel) uptime 1 minute
+18:24:34.355 [Thread-5] INFO  o.a.camel.spring.SpringCamelContext - Apache Camel 2.21.0.fuse-740039-redhat-00001 (CamelContext: MyCamel) is shutdown in 0.633 seconds
+18:24:34.355 [Thread-5] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 0
+18:24:34.356 [Thread-5] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Unregistering JMX-exposed beans on shutdown
+18:24:34.356 [Thread-5] INFO  o.s.b.a.e.jmx.EndpointMBeanExporter - Unregistering JMX-exposed beans
+18:24:34.356 [Thread-5] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown

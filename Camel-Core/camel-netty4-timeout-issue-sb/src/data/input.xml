@@ -1,0 +1,7 @@
+<Msg>
+	<Header>
+		<EAIMsgVerNo>1</EAIMsgVerNo>
+		<EAITransType>AG00005</EAITransType>
+		<EAIApplName>MOne</EAIApplName>
+	</Header>
+</Msg>	

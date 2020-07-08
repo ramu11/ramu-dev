@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
+       
+       
+    
+  <camelContext xmlns="http://camel.apache.org/schema/spring" >
+  
+     <!--   <route id="msg1">
+            <from uri="file:src/data?noop=true"/>
+            <log message="Got a message from file >> ${body}"/>
+            <to id="_to1" uri="activemq:as400_bal_inq_jms_esb"/>
+             <log message="Got a message >> ${body}"/>
+        </route> -->
+        
+         <route id="timer-route2">
+            <from uri="timer:foo?period=10000&amp;repeatCount=1"/>
+             <setBody>
+                        <constant>Hello how is your day </constant>
+                    </setBody>
+            <to id="_to1" uri="activemq:as400_bal_inq_jms_esb"/>
+            <log message="body after activemq call >> ${body}"/>
+        </route>
+        
+        
+        <route  id="netty2">
+            <from uri="activemq:as400_bal_inq_jms_esb"/>
+            <setHeader headerName="CamelNettyRequestTimeout">
+		   <constant>30000</constant>
+	      </setHeader>
+	      <!-- <recipientList>
+            <simple>netty4:tcp://localhost:8082?requestTimeout=30000&amp;producerPoolMaxActive=4&amp;disconnect=true&amp;decoders=#host-decoder&amp;encoders=#host-encoder</simple>
+           </recipientList> -->
+           <recipientList>
+            <simple>netty4:tcp://localhost:8082?requestTimeout=30000&amp;producerPoolMaxActive=4</simple>
+           </recipientList>
+            <log message="Got a message from  recipientList>> ${body}"/>
+             <setBody>
+                        <constant>I am fine........ </constant>
+              </setBody>
+               <log message="Got a message after set body>> ${body}"/>      
+        </route> 
+
+      <route id="server">
+            <from uri="netty4:tcp://localhost:8082"/>
+            <log message="Got a messag nettyservere >> ${body}"/>
+        </route> 
+    </camelContext>
+
+    <bean id="defaultShutdownStrategy"
+          class="org.apache.camel.impl.DefaultShutdownStrategy">
+        <property name="timeout" value="2"/>
+        <property name="suppressLoggingOnTimeout" value="false"/>
+        <property name="shutdownNowOnTimeout" value="true"/>
+    </bean>
+    
+    
+     <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+         <property name="brokerURL" value="failover:tcp://localhost:61616"/>
+        <property name="userName" value="admin"/>
+        <property name="password" value="admin"/>
+        <property name="trustAllPackages" value="true"/>
+    </bean>
+     <bean id="jmsConfig" class="org.apache.activemq.camel.component.ActiveMQConfiguration">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="concurrentConsumers" value="2"/>
+    </bean>
+
+    <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+        <property name="configuration" ref="jmsConfig"/>
+    </bean>
+    
+   <!-- <bean id="host-decoder" class="io.netty.handler.codec.string.StringDecoder"/>
+   
+  <bean id="host-encoder" class="io.netty.handler.codec.string.StringEncoder"/> -->
+   
+    
+  <bean id="host-encoder"
+		class="org.example.ByteArrayCodecFactory"
+		factory-method="newByteArrayEncoder"/>
+
+	<bean id="host-decoder"
+		class="org.example.ByteArrayCodecFactory" 
+		factory-method="getDecoders"/> 
+    
+</beans>
